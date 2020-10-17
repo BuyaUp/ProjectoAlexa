@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "Candidatura";
+}
+
+<html>
+<head>
+    <title>@ViewBag.Title - MINEA</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/fontawesome-all.css" rel="stylesheet" />
+</head>
+<body>
+
+
+    <div class="row mr-auto ml-auto«">
+        <div class="col-md-8 col-sm-12 m-3">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h2>@ViewBag.Title</h2>
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-horizontal">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5>Dados Pessoais</h5>
+                                    <hr />
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        <label>Nome completo</label>
+                                        <div class="">
+                                            <input type="text" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label>???</label>
+                                        <div class="">
+                                            <input type="text" class="form-control" />
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>
+                                            Data de Nascimento</label>
+                                            <div class="">
+                                                <input type="text" class="form-control" />
+
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5>Dados da Conta</h5>
+                                <hr />
+                            </div>
+                            <div class="col-md-5">
+
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <div class="">
+                                        <input type="text" class="form-control" />
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class=" col-md-3">
+                                <div class="form-group">
+                                    <label>Senha</label>
+                                    <div class="">
+                                        <input type="text" class="form-control" />
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Confirmar senha</label>
+                                    <div class="">
+                                        <input type="text" class="form-control" />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5>Documentos</h5>
+                                <hr />
+                            </div>
+                            <div class=" col-md-6">
+                                <div class="form-group">
+                                    <label>Cópia do BI</label>
+                                    <div class="">
+                                        <input type="text" class="form-control" />
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Certificado</label>
+                                    <div class="">
+                                        <input type="text" class="form-control" />
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Carta para o ministro</label>
+                                    <div class="">
+                                        <input type="text" class="form-control" />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Enviar Candidatura" class="btn btn-info" />
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</body>
+</html>
+
+
+
