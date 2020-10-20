@@ -339,6 +339,16 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectoAlexa.Data\ProjectoAlexa.Data.csproj">
+      <Project>{9a923b6d-4da0-4fbc-ace9-0252ec2b67b4}</Project>
+      <Name>ProjectoAlexa.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectoAlexa.Domain\ProjectoAlexa.Domain.csproj">
+      <Project>{f1b04f34-06e4-4338-989e-e5af993290f4}</Project>
+      <Name>ProjectoAlexa.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
