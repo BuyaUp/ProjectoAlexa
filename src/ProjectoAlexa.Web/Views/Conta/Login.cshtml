@@ -23,58 +23,59 @@
             <hr />
         </div>
 
-        <div class="col-md-4">
-
-            <div class="card">
-                <div class="card-header bg-info text-white position-center">
-                    <h2>@ViewBag.Title</h2>
-                </div>
-                <div class="card-body">
-                    @using (Html.BeginForm("Login", "Conta", FormMethod.Post, new { @class = "col-md-8" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <div class="form-horizontal">
-
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="form-group">
-                                <span class="fas fa-user-alt"></span> <label>Nome de Usuário</label>
-                                <div class="">
-                                    <input type="text" class="form-control" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <span class="fas fa-key"></span> <label>Senha</label>
-                                <div class="">
-                                    <input type="text" class="form-control" />
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-
-                                <label>Lembrar?</label>
-                                <input type="checkbox" />
-                            </div>
-
-
-
-                            <div class="form-group">
-                                <div class="btn-group">
-                                    <input type="submit" value="Entrar no sistema" class="btn btn-info" /> &nbsp;&nbsp;
-                                    <a href="@Url.Action("Index","Home")" class="btn btn-warning">Cancelar</a>
-                                </div>
-                            </div>
+        <div class="col-md-12">
+            <center>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header bg-info text-white position-center">
+                            <h2>@ViewBag.Title</h2>
                         </div>
-                    }
+                        <div class="card-body text-left">
+                            @using (Html.BeginForm("Login", "Conta", FormMethod.Post, new { @class = "col-md-12" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="form-horizontal">
+
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        <span class="fas fa-user-alt"></span> <label>Nome de Usuário</label>
+                                        <div class="">
+                                            <input type="text" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <span class="fas fa-key"></span> <label>Senha</label>
+                                        <div class="">
+                                            <input type="text" class="form-control" />
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label>Lembrar?</label>
+                                        <input type="checkbox" />
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <div class="btn-group">
+                                            <input type="submit" value="Entrar no sistema" class="btn btn-info" /> &nbsp;&nbsp;
+                                            <a href="@Url.Action("Index","Home")" class="btn btn-warning">Cancelar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
 
                 </div>
-            </div>
-
-
-
+            </center>
         </div>
-
+       
 
 
     </div>

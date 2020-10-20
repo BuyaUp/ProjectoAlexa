@@ -8,9 +8,14 @@
     background-size: cover;
 }
 
+.criar-bg {
+    background-image: url(../Media/Imagens/pexels-frans-van-heerden-2699258.jpg);
+    background-size: cover;
+}
 
 
 .position-center {
     left: 30%;
     right: 30%;
 }
+
