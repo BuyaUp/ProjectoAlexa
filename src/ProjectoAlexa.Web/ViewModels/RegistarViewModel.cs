@@ -10,13 +10,13 @@ namespace ProjectoAlexa.Web.ViewModels
     public class RegistarViewModel
     {
         #region Dados de Acesso
-        [Required(ErrorMessage = "{0} Campo obrigatório!")]
+        [Required(ErrorMessage = "{0} campo obrigatório!")]
         [EmailAddress]
         //[MaxLength(254, ErrorMessage = "O {0} deve ter no máximo {2} caracteres")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "{0} Campo obrigatório!")]
+        [Required(ErrorMessage = "{0} campo obrigatório!")]
         [StringLength(100, ErrorMessage = "A {0} deve ter no mínimo {2} caracteres", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Senha")]
@@ -31,12 +31,20 @@ namespace ProjectoAlexa.Web.ViewModels
 
         #region Dados Pessoais e Documentos
 
-        [Required(ErrorMessage = "{0} Campo obrigatório!")]
+        [Required(ErrorMessage = "{0} campo obrigatório!")]
         [Display(Name = "Nome Completo")]
         public string NomeCompleto { get; set; }
 
-        [Required(ErrorMessage = "{0} Campo obrigatório!")]
-        public string Genero { get; set; } 
+        [Required(ErrorMessage = "{0} campo obrigatório!")]
+        public string Genero { get; set; }
+
+        [Required(ErrorMessage = "{0} campo obrigatório!")]
+        public DateTime DataNascimento { get; set; }
+
+        public string Foto { get; set; }
+        public string CopiaBI { get; set; }
+        public string CertificadoHabilitacoes { get; set; }
+        public string CartaMinistro { get; set; }
         #endregion
 
 

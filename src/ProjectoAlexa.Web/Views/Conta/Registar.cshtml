@@ -39,7 +39,10 @@
                                             <div class="form-group">
                                                 <label>Nome completo</label>
                                                 <div class="">
-                                                    <input type="text" class="form-control" />
+                                                    @Html.TextBoxFor(model => model.NomeCompleto, new { @class = "form-control" })
+                                                    <small>
+                                                        @Html.ValidationMessageFor(model => model.NomeCompleto, "", new { @class = "text-danger" })
+                                                    </small>
                                                 </div>
                                             </div>
                                         </div>
@@ -62,7 +65,10 @@
                                                     Data de Nascimento
                                                 </label>
                                                 <div class="">
-                                                    <input type="date" class="form-control" />
+                                                    @Html.TextBoxFor(model => model.DataNascimento, new { @class = "form-control", type = "date" })
+                                                    <small>
+                                                        @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+                                                    </small>
                                                 </div>
                                             </div>
                                         </div>
@@ -71,8 +77,10 @@
                                             <div class="form-group">
                                                 <label>Foto</label>
                                                 <div class="">
-                                                    <input type="file" class="form-control" />
-
+                                                    @Html.TextBoxFor(model => model.Foto, new { @class = "form-control", type = "file" })
+                                                    <small>
+                                                        @Html.ValidationMessageFor(model => model.Foto, "", new { @class = "text-danger" })
+                                                    </small>
                                                 </div>
                                             </div>
                                         </div>
@@ -132,8 +140,10 @@
                                         <div class="form-group">
                                             <label>Cópia do BI</label>
                                             <div class="">
-                                                <input type="file" class="form-control" />
-
+                                                @Html.TextBoxFor(model => model.CopiaBI, new { @class = "form-control", type = "file" })
+                                                <small>
+                                                    @Html.ValidationMessageFor(model => model.CopiaBI, "", new { @class = "text-danger" })
+                                                </small>
                                             </div>
                                         </div>
                                     </div>
@@ -141,8 +151,10 @@
                                         <div class="form-group">
                                             <label>Certificado</label>
                                             <div class="">
-                                                <input type="file" class="form-control" />
-
+                                                @Html.TextBoxFor(model => model.CertificadoHabilitacoes, new { @class = "form-control", type = "file" })
+                                                <small>
+                                                    @Html.ValidationMessageFor(model => model.CertificadoHabilitacoes, "", new { @class = "text-danger" })
+                                                </small>
                                             </div>
                                         </div>
                                     </div>
@@ -150,8 +162,10 @@
                                         <div class="form-group">
                                             <label>Carta para o ministro</label>
                                             <div class="">
-                                                <input type="file" class="form-control" />
-
+                                                @Html.TextBoxFor(model => model.CartaMinistro, new { @class = "form-control", type = "file" })
+                                                <small>
+                                                    @Html.ValidationMessageFor(model => model.CartaMinistro, "", new { @class = "text-danger" })
+                                                </small>
                                             </div>
                                         </div>
                                     </div>
