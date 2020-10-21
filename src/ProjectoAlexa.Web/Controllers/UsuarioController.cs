@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjectoAlexa.Data.DataContexts;
+using ProjectoAlexa.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,7 +10,6 @@ namespace ProjectoAlexa.Web.Controllers
 {
     public class UsuarioController : Controller
     {
-        // GET: Usuario
         public ActionResult Perfil()
         {
             return View();
