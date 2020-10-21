@@ -115,7 +115,7 @@
                                         <div class="form-group">
                                             <label>Senha</label>
                                             <div class="">
-                                                @Html.TextBoxFor(model => model.Senha, new { @class = "form-control" })
+                                                @Html.TextBoxFor(model => model.Senha, new { @class = "form-control", type = "password" })
                                                 <small>
                                                     @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
                                                 </small>
@@ -127,7 +127,7 @@
                                         <div class="form-group">
                                             <label>Confirmar senha</label>
                                             <div class="">
-                                                @Html.TextBoxFor(model => model.ConfirmarSenha, new { @class = "form-control" })
+                                                @Html.TextBoxFor(model => model.ConfirmarSenha, new { @class = "form-control", type = "password" })
                                                 <small>
                                                     @Html.ValidationMessageFor(model => model.ConfirmarSenha, "", new { @class = "text-danger" })
                                                 </small>
