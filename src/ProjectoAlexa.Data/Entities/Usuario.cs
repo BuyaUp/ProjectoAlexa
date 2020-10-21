@@ -91,8 +91,8 @@ namespace ProjectoAlexa.Data.Entities
                     {
                         this.Senha = CriptoHelper.Encrypt(this.Senha);
                     }
-                    Usuario user = this;
-                    db.Usuarios.Add(user);
+
+                    db.Usuarios.Add(this);
                 }
                 else
                 {

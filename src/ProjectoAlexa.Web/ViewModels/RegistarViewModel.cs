@@ -10,8 +10,13 @@ namespace ProjectoAlexa.Web.ViewModels
     public class RegistarViewModel
     {
         #region Dados de Acesso
+        public RegistarViewModel()
+        {
+            Id = Guid.NewGuid().ToString();
+        }
+
         public string Id { get; set; }
-        public string NomeUsuario { get; set; }
+        public string NomeUsuario { get; set; } = "";
 
         [Required(ErrorMessage = "{0} campo obrigatório!")]
         [EmailAddress]
@@ -60,7 +65,7 @@ namespace ProjectoAlexa.Web.ViewModels
         [Display(Name = "Carta p/ Ministro")]
         public string CartaMinistro { get; set; }
 
-        public int MunicipioId { get; set; }
+        public int MunicipioId { get; set; } = 0;
         #endregion
 
 
