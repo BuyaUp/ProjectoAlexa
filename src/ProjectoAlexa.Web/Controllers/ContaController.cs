@@ -8,13 +8,14 @@ using System.Web.Mvc;
 using System.Web.Security;
 using System.Data.Entity;
 using ProjectoAlexa.Web.Models;
+using AutoMapper;
 
 namespace ProjectoAlexa.Web.Controllers
 {
     public class ContaController : Controller
     {
         private readonly ProjectoBaseDataContext _context = new ProjectoBaseDataContext();
-
+        private readonly IMapper _mapper = AutoMapper.AutoMapperConfig.Mapper;
         // GET: Conta
         public ActionResult Registar()
         {
@@ -30,7 +31,8 @@ namespace ProjectoAlexa.Web.Controllers
                 return View(viewModel);
             else
             {
-
+                var vm = _mapper.Map<UsuarioModel>(viewModel);
+                var id = vm.Salvar();
                 return RedirectToAction("Login", "Conta");
             }
         }

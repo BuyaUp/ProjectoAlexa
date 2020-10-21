@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectoAlexa.Data", "src\P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectoAlexa.Web", "src\ProjectoAlexa.Web\ProjectoAlexa.Web.csproj", "{B7322913-9E33-45BC-9E89-D5388560A888}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Apresentaçãao", "1 - Apresentaçãao", "{63EC82AE-29E4-4D67-BC15-5C1A7CC86224}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Apresentação", "1 - Apresentação", "{63EC82AE-29E4-4D67-BC15-5C1A7CC86224}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain", "2 - Domain", "{3F1CC9BC-C716-42A9-9445-F7E0B98A2A34}"
 EndProject
