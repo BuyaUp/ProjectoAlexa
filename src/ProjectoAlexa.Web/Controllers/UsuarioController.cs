@@ -1,5 +1,4 @@
 ﻿using ProjectoAlexa.Data.DataContexts;
-using ProjectoAlexa.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

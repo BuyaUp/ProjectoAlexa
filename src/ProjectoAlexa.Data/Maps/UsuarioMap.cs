@@ -1,4 +1,4 @@
-﻿using ProjectoAlexa.Domain.Entities;
+﻿using ProjectoAlexa.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;

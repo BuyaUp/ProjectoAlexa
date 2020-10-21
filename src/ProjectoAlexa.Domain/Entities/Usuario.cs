@@ -12,6 +12,9 @@ namespace ProjectoAlexa.Domain.Entities
         {
             Id = Guid.NewGuid().ToString();
         }
+
+        #region Atributos
+
         public string NomeUsuario { get; set; }
         public string NomeCompleto { get; set; }
         public string Email { get; set; }
@@ -20,6 +23,110 @@ namespace ProjectoAlexa.Domain.Entities
         public int UsuarioPerfilId { get; set; }
         public int MunicipioId { get; set; }
 
+        #endregion
+
         public virtual UsuarioPerfil UsuarioPerfil { get; set; }
+
+        public static Usuario ValidarUsuario(string nomeUsuario, string senha)
+        {
+            Usuario ret = null;
+            senha = CriptoHelper.Encrypt(senha);
+
+            using (var db = new ProjectoBaseDataContext())
+            {
+                ret = db.Usuarios
+                    .Include(x => x.UsuarioPerfil)
+                    .Where(x => x.NomeUsuario == nomeUsuario && x.Senha == senha)
+                    .FirstOrDefault();
+            }
+
+            return ret;
+        }
+
+
+        public static Usuario BuscarPeloId(string id)
+        {
+            Usuario ret = null;
+
+            using (var db = new ProjectoBaseDataContext())
+            {
+                ret = (Usuario)db.Usuarios.Find(id);
+            }
+
+            return ret;
+        }
+
+        public static bool ExcluirPeloId(string id)
+        {
+            var ret = false;
+
+            if (BuscarPeloId(id) != null)
+            {
+                using (var db = new ProjectoBaseDataContext())
+                {
+                    var usuario = new Usuario { Id = id };
+                    db.Usuarios.Attach(usuario);
+                    db.Entry(usuario).State = EntityState.Deleted;
+                    db.SaveChanges();
+                    ret = true;
+                }
+            }
+
+            return ret;
+        }
+
+        public string Salvar()
+        {
+            var ret = string.Empty;
+
+            var model = BuscarPeloId(this.Id);
+
+            using (var db = new ProjectoBaseDataContext())
+            {
+                if (model == null)
+                {
+                    if (!string.IsNullOrEmpty(this.Senha))
+                    {
+                        this.Senha = CriptoHelper.Encrypt(this.Senha);
+                    }
+                    Usuario user = this as Usuario;
+                    db.Usuarios.Add(user);
+                }
+                else
+                {
+                    db.Usuarios.Attach(this);
+                    db.Entry(this).State = EntityState.Modified;
+
+                    if (string.IsNullOrEmpty(this.Senha))
+                    {
+                        db.Entry(this).Property(x => x.Senha).IsModified = false;
+                    }
+                    else
+                    {
+                        this.Senha = CriptoHelper.Encrypt(this.Senha);
+                    }
+                }
+
+                db.SaveChanges();
+                ret = this.Id;
+            }
+
+            return ret;
+        }
+
+        public bool AlterarSenha(string novaSenha)
+        {
+            var ret = false;
+
+            using (var db = new ProjectoBaseDataContext())
+            {
+                this.Senha = CriptoHelper.Encrypt(novaSenha);
+                db.Usuarios.Attach(this);
+                db.Entry(this).Property(x => x.Senha).IsModified = true;
+                db.SaveChanges();
+            }
+
+            return ret;
+        }
     }
 }

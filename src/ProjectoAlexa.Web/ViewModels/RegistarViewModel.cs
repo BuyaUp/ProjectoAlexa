@@ -10,6 +10,9 @@ namespace ProjectoAlexa.Web.ViewModels
     public class RegistarViewModel
     {
         #region Dados de Acesso
+        public string Id { get; set; }
+        public string NomeUsuario { get; set; }
+
         [Required(ErrorMessage = "{0} campo obrigatório!")]
         [EmailAddress]
         //[MaxLength(254, ErrorMessage = "O {0} deve ter no máximo {2} caracteres")]
@@ -26,6 +29,8 @@ namespace ProjectoAlexa.Web.ViewModels
         [Display(Name = "Confirmar senha")]
         [Compare("Senha", ErrorMessage = "A senha e a confirmação devem ser iguais.")]
         public string ConfirmarSenha { get; set; }
+
+        public int UsuarioPerfilId { get; set; }
         #endregion
 
 
@@ -36,15 +41,26 @@ namespace ProjectoAlexa.Web.ViewModels
         public string NomeCompleto { get; set; }
 
         [Required(ErrorMessage = "{0} campo obrigatório!")]
+        [Display(Name = "Gênero")]
         public string Genero { get; set; }
 
         [Required(ErrorMessage = "{0} campo obrigatório!")]
+        [Display(Name = "Data de Nascimento")]
         public DateTime DataNascimento { get; set; }
 
+        [Display(Name = "Fotográfia Tipo Passe")]
         public string Foto { get; set; }
+
+        [Display(Name = "Cópia de BI")]
         public string CopiaBI { get; set; }
+
+        [Display(Name = "Certificado")]
         public string CertificadoHabilitacoes { get; set; }
+
+        [Display(Name = "Carta p/ Ministro")]
         public string CartaMinistro { get; set; }
+
+        public int MunicipioId { get; set; }
         #endregion
 
 

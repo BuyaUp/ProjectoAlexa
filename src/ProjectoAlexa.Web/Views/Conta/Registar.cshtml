@@ -52,10 +52,15 @@
                                             <div class="form-group">
                                                 <label>Gênero</label>
                                                 <div class="">
-                                                    <select class="form-control">
+                                                    <select class="form-control" name="Genero">
                                                         <option>Masculino</option>
                                                         <option>Femenino</option>
                                                     </select>
+
+                                                    @*@Html.TextBoxFor(model => model.Genero, new { @class = "form-control" })*@
+                                                    <small>
+                                                        @Html.ValidationMessageFor(model => model.Genero, "", new { @class = "text-danger" })
+                                                    </small>
                                                 </div>
                                             </div>
                                         </div>

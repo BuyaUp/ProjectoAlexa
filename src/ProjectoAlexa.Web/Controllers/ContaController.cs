@@ -7,15 +7,21 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using System.Data.Entity;
-using ProjectoAlexa.Web.Models;
 using AutoMapper;
+using ProjectoAlexa.Data.Entities;
 
 namespace ProjectoAlexa.Web.Controllers
 {
     public class ContaController : Controller
     {
-        private readonly ProjectoBaseDataContext _context = new ProjectoBaseDataContext();
-        private readonly IMapper _mapper = AutoMapper.AutoMapperConfig.Mapper;
+        //private readonly ProjectoBaseDataContext _context = new ProjectoBaseDataContext();
+        private readonly IMapper _mapper;
+
+        public ContaController()
+        {
+            _mapper = AutoMapperConfig.Mapper;
+        }
+
         // GET: Conta
         public ActionResult Registar()
         {
@@ -31,8 +37,13 @@ namespace ProjectoAlexa.Web.Controllers
                 return View(viewModel);
             else
             {
-                var vm = _mapper.Map<UsuarioModel>(viewModel);
+                viewModel.UsuarioPerfilId = UsuarioPerfil.BuscarPeloNome("Usuário").Id;
+                var vm = _mapper.Map<Usuario>(viewModel);
                 var id = vm.Salvar();
+
+                if (string.IsNullOrEmpty(id))
+                    return View(viewModel);
+
                 return RedirectToAction("Login", "Conta");
             }
         }
@@ -47,7 +58,7 @@ namespace ProjectoAlexa.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var usuario = UsuarioModel.ValidarUsuario(model.NomeUsuario, model.Senha);
+                var usuario = Usuario.ValidarUsuario(model.NomeUsuario, model.Senha);
 
                 if (usuario == null)
                 {

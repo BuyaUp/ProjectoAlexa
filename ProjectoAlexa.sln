@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectoAlexa.Domain", "src\ProjectoAlexa.Domain\ProjectoAlexa.Domain.csproj", "{F1B04F34-06E4-4338-989E-E5AF993290F4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectoAlexa.Data", "src\ProjectoAlexa.Data\ProjectoAlexa.Data.csproj", "{9A923B6D-4DA0-4FBC-ACE9-0252EC2B67B4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectoAlexa.Web", "src\ProjectoAlexa.Web\ProjectoAlexa.Web.csproj", "{B7322913-9E33-45BC-9E89-D5388560A888}"
@@ -21,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F1B04F34-06E4-4338-989E-E5AF993290F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F1B04F34-06E4-4338-989E-E5AF993290F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F1B04F34-06E4-4338-989E-E5AF993290F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F1B04F34-06E4-4338-989E-E5AF993290F4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9A923B6D-4DA0-4FBC-ACE9-0252EC2B67B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9A923B6D-4DA0-4FBC-ACE9-0252EC2B67B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A923B6D-4DA0-4FBC-ACE9-0252EC2B67B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -38,7 +32,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{F1B04F34-06E4-4338-989E-E5AF993290F4} = {3F1CC9BC-C716-42A9-9445-F7E0B98A2A34}
 		{9A923B6D-4DA0-4FBC-ACE9-0252EC2B67B4} = {A80928F1-8729-4973-813B-038843057734}
 		{B7322913-9E33-45BC-9E89-D5388560A888} = {63EC82AE-29E4-4D67-BC15-5C1A7CC86224}
 	EndGlobalSection

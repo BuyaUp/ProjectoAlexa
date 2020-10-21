@@ -48,5 +48,11 @@
     <Compile Include="Entities\UsuarioPerfil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectoAlexa.Web\ProjectoAlexa.Web.csproj">
+      <Project>{b7322913-9e33-45bc-9e89-d5388560a888}</Project>
+      <Name>ProjectoAlexa.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

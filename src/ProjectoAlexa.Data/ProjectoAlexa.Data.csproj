@@ -53,6 +53,12 @@
   <ItemGroup>
     <Compile Include="DataContexts\DbInitializer.cs" />
     <Compile Include="DataContexts\ProjectoBaseDataContext.cs" />
+    <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\Municipio.cs" />
+    <Compile Include="Entities\Provincia.cs" />
+    <Compile Include="Entities\Usuario.cs" />
+    <Compile Include="Entities\UsuarioPerfil.cs" />
+    <Compile Include="Helpers\CriptoHelper.cs" />
     <Compile Include="Maps\UsuarioMap.cs" />
     <Compile Include="Maps\UsuarioPerfilMap.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -63,12 +69,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ProjectoAlexa.Domain\ProjectoAlexa.Domain.csproj">
-      <Project>{f1b04f34-06e4-4338-989e-e5af993290f4}</Project>
-      <Name>ProjectoAlexa.Domain</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

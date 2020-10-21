@@ -1,24 +1,34 @@
 ﻿using ProjectoAlexa.Data.DataContexts;
-using ProjectoAlexa.Web.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using ProjectoAlexa.Domain.Entities;
+using ProjectoAlexa.Data.Helpers;
 
-namespace ProjectoAlexa.Web.Models
+namespace ProjectoAlexa.Data.Entities
 {
-    public class UsuarioModel : Usuario
+    public class Usuario : Entity<string>
     {
+        public Usuario()
+        {
+            Id = Guid.NewGuid().ToString();
+        }
+
         #region Atributos
 
-        public string Login { get; set; }
-        public string Nome { get; set; }
-        public virtual List<UsuarioPerfilModel> Perfis { get; set; }
+        public string NomeUsuario { get; set; }
+        public string NomeCompleto { get; set; }
+        public string Email { get; set; }
+        public string Senha { get; set; }
+        public DateTime DataNascimento { get; set; }
+        public int UsuarioPerfilId { get; set; }
+        public int MunicipioId { get; set; }
 
         #endregion
+
+        public virtual UsuarioPerfil UsuarioPerfil { get; set; }
 
         public static Usuario ValidarUsuario(string nomeUsuario, string senha)
         {
@@ -36,13 +46,14 @@ namespace ProjectoAlexa.Web.Models
             return ret;
         }
 
-        public static UsuarioModel BuscarPeloId(string id)
+
+        public static Usuario BuscarPeloId(string id)
         {
-            UsuarioModel ret = null;
+            Usuario ret = null;
 
             using (var db = new ProjectoBaseDataContext())
             {
-                ret = (UsuarioModel)db.Usuarios.Find(id);
+                ret = db.Usuarios.Find(id);
             }
 
             return ret;
@@ -52,13 +63,12 @@ namespace ProjectoAlexa.Web.Models
         {
             var ret = false;
 
-            if (BuscarPeloId(id) != null)
+            if (id != null)
             {
                 using (var db = new ProjectoBaseDataContext())
                 {
-                    var usuario = new Usuario { Id = id };
-                    db.Usuarios.Attach(usuario);
-                    db.Entry(usuario).State = EntityState.Deleted;
+                    var usuario = BuscarPeloId(id);
+                    db.Usuarios.Remove(usuario);
                     db.SaveChanges();
                     ret = true;
                 }
@@ -81,7 +91,8 @@ namespace ProjectoAlexa.Web.Models
                     {
                         this.Senha = CriptoHelper.Encrypt(this.Senha);
                     }
-                    db.Usuarios.Add(this);
+                    Usuario user = this;
+                    db.Usuarios.Add(user);
                 }
                 else
                 {

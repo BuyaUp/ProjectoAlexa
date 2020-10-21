@@ -8,6 +8,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 
+
 namespace ProjectoAlexa.Web
 {
     public class MvcApplication : HttpApplication
@@ -18,6 +19,8 @@ namespace ProjectoAlexa.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            AutoMapperConfig.Init();
         }
 
         protected void Application_AuthenticateRequest(Object sender, EventArgs e)
