@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Infrastructure.Annotations;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
@@ -25,8 +26,12 @@ namespace ProjectoAlexa.Data.Maps
 
             Property(col => col.PerfilNome)
                     .HasColumnType("varchar")
-                    .HasMaxLength(100)
-                    .IsRequired();
+                    .HasMaxLength(30)
+                    .IsRequired()
+                    .HasColumnAnnotation( //Cria o indice do campo email
+                IndexAnnotation.AnnotationName,
+                new IndexAnnotation(new IndexAttribute("UQ_dbo.UsuarioPerfil.PerfilNome") { IsUnique = true })
+                );
 
             Property(col => col.DataCadastro);
             Property(col => col.Ativo);
