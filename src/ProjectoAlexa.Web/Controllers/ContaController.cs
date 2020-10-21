@@ -16,11 +16,24 @@ namespace ProjectoAlexa.Web.Controllers
         private readonly ProjectoBaseDataContext _context = new ProjectoBaseDataContext();
 
         // GET: Conta
-        public ActionResult Criar()
+        public ActionResult Registar()
         {
             return View();
         }
 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Registar(RegistarViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+                return View(viewModel);
+            else
+            {
+
+                return RedirectToAction("Login", "Conta");
+            }
+        }
         public ActionResult Login()
         {
             return View();
@@ -61,7 +74,7 @@ namespace ProjectoAlexa.Web.Controllers
 
                     HttpContext.Response.Cookies.Add(authCookie);
 
-                   // Success("Bem-vindo!");
+                    // Success("Bem-vindo!");
                     return RedirectToAction("Index", "Home");
                 }
             }

@@ -10,11 +10,14 @@ namespace ProjectoAlexa.Web.ViewModels
     public class LoginViewModel
     {
         [Required(ErrorMessage = "Campo obrigatório!")]
-        [Display(Name = "Usuário")]
+        [Display(Name = "Nome de Usuário")]
         public string NomeUsuario { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório!")]
         [Display(Name = "Senha")]
         public string Senha { get; set; }
+
+        [Display(Name = "Lembrar-me")]
+        public bool LembrarMe { get; set; }
     }
 }
