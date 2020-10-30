@@ -54,7 +54,6 @@ namespace ProjectoAlexa.Web.Controllers
 
                 if (usuario == null)
                 {
-                    //Warning("Dados inválidos!", true);
                     ModelState.AddModelError("", "Login inválido.");
                     return View(model);
                 }
@@ -62,7 +61,6 @@ namespace ProjectoAlexa.Web.Controllers
                 {
                     if (!usuario.Ativo)
                     {
-                        //Warning("Usuário bloqueado!", true);
                         ModelState.AddModelError("", "Usuário bloqueado!");
                         return View(model);
                     }
@@ -84,9 +82,7 @@ namespace ProjectoAlexa.Web.Controllers
                 }
             }
             else
-            {
                 return View(model);
-            }
         }
 
         [HttpPost]
