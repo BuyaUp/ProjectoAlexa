@@ -20,7 +20,13 @@ namespace ProjectoAlexa.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            AutoMapperConfig.Init();
+           // AutoMapperConfig.IniciarAutoMapping();
+        }
+
+        // Faz o mappeamento ao iniciar qualquer requisição
+        protected void Application_BeginRequest()
+        {
+            Context.Items["Mapper"] = AutoMapperConfig.IniciarAutoMapping();
         }
 
         protected void Application_AuthenticateRequest(Object sender, EventArgs e)

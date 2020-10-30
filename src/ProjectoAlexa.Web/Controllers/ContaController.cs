@@ -12,16 +12,8 @@ using ProjectoAlexa.Data.Entities;
 
 namespace ProjectoAlexa.Web.Controllers
 {
-    public class ContaController : Controller
+    public class ContaController : BaseController
     {
-        //private readonly ProjectoBaseDataContext _context = new ProjectoBaseDataContext();
-        private readonly IMapper _mapper;
-
-        public ContaController()
-        {
-            _mapper = AutoMapperConfig.Mapper;
-        }
-
         // GET: Conta
         public ActionResult Registar()
         {
@@ -38,7 +30,7 @@ namespace ProjectoAlexa.Web.Controllers
             else
             {
                 viewModel.UsuarioPerfilId = UsuarioPerfil.BuscarPeloNome("Usuário").Id;
-                var vm = _mapper.Map<Usuario>(viewModel);
+                var vm = Mapper.Map<Usuario>(viewModel);
                 var id = vm.Salvar();
 
                 if (string.IsNullOrEmpty(id))
@@ -78,7 +70,7 @@ namespace ProjectoAlexa.Web.Controllers
                     var authTicket = new FormsAuthenticationTicket(
                         1,
                         usuario.NomeUsuario, DateTime.Now, DateTime.Now.AddMinutes(30),
-                        false, usuario.UsuarioPerfil.PerfilNome,
+                        model.LembrarMe, usuario.UsuarioPerfil.PerfilNome,
                         FormsAuthentication.FormsCookiePath);
 
                     var authCrypt = FormsAuthentication.Encrypt(authTicket);

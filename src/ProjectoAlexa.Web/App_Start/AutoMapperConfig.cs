@@ -6,9 +6,7 @@ namespace ProjectoAlexa
 {
     public class AutoMapperConfig
     {
-        public static IMapper Mapper { get; private set; }
-
-        public static void Init()
+        public static IMapper IniciarAutoMapping()
         {
             var config = new MapperConfiguration(cfg =>
             {
@@ -19,7 +17,7 @@ namespace ProjectoAlexa
 
             });
 
-            Mapper = config.CreateMapper();
+           return config.CreateMapper();
         }
     }
 }

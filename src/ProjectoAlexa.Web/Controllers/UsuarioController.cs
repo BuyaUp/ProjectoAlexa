@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace ProjectoAlexa.Web.Controllers
 {
-    public class UsuarioController : Controller
+    public class UsuarioController : BaseController
     {
         public ActionResult Perfil()
         {
