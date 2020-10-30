@@ -14,6 +14,5 @@ namespace ProjectoAlexa.Data.Entities
         }
 
         public string ProvinciaNome { get; set; }
-        public virtual ICollection<Municipio> Municipios { get; set; }
     }
 }

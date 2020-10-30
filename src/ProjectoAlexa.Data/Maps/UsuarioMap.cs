@@ -23,8 +23,9 @@ namespace ProjectoAlexa.Data.Maps
             //Colunas
             Property(col => col.Id)
                 .HasColumnType("varchar")
-                .HasMaxLength(200);
-            //.HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+                .HasMaxLength(200)
+                .HasColumnName("UsuarioId")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             Property(col => col.NomeUsuario)
                 .HasColumnType("varchar")
@@ -49,9 +50,9 @@ namespace ProjectoAlexa.Data.Maps
             Property(col => col.Ativo);
 
             //Relacionamentos
-            HasRequired(prod => prod.UsuarioPerfil)
-                .WithMany(tipo => tipo.Usuarios)
-                .HasForeignKey(fk => fk.UsuarioPerfilId);
+            HasRequired(prod => prod.UsuarioPerfil) //tabela primária ou PK
+                .WithMany(tipo => tipo.Usuarios) //tabela secundária ou que recebe a FK
+                .HasForeignKey(fk => fk.UsuarioPerfilId); // chave estrangeira
         }
     }
 }

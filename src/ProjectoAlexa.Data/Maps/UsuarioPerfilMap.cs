@@ -22,7 +22,8 @@ namespace ProjectoAlexa.Data.Maps
 
             //Colunas
             Property(col => col.Id)
-                    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+                .HasColumnName("UsuarioPerfilId")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             Property(col => col.PerfilNome)
                     .HasColumnType("varchar")

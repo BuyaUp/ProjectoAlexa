@@ -24,7 +24,9 @@ namespace ProjectoAlexa.Data.Entities
         public string Senha { get; set; }
         public DateTime DataNascimento { get; set; }
         public int UsuarioPerfilId { get; set; }
-        public int MunicipioId { get; set; }
+
+        public virtual ICollection<Pergunta> Perguntas { get; set; }
+        public virtual ICollection<Candidatura> Candidaturas { get; set; }
 
         #endregion
 

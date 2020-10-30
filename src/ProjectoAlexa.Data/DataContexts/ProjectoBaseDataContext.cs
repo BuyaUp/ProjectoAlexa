@@ -29,6 +29,15 @@ namespace ProjectoAlexa.Data.DataContexts
 
             modelBuilder.Configurations.Add(new Maps.UsuarioMap());
             modelBuilder.Configurations.Add(new Maps.UsuarioPerfilMap());
+
+            modelBuilder.Configurations.Add(new Maps.AreaCandidaturaMap());
+            modelBuilder.Configurations.Add(new Maps.CandidaturaMap());
+            modelBuilder.Configurations.Add(new Maps.DocumentoMap());
+
+            modelBuilder.Configurations.Add(new Maps.PerguntaMap());
+            modelBuilder.Configurations.Add(new Maps.RespostaMap());
+
+            modelBuilder.Configurations.Add(new Maps.ProvinciaMap());
         }
     }
 }
