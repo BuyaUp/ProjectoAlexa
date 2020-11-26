@@ -1,5 +1,6 @@
 ﻿using ProjectoAlexa.Data.DataContexts;
 using ProjectoAlexa.Data.Entities;
+using ProjectoAlexa.Data.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
@@ -24,9 +25,10 @@ namespace ProjectoAlexa.Data.Seeds
             context.Usuarios.AddOrUpdate(x => x.Email,
                 new Usuario()
                 {
+                    Id = Guid.NewGuid().ToString(),
                     NomeUsuario = "Admin",
                     Email = "admin@projectoalexa.com",
-                    Senha = "master",
+                    Senha = "master".Encrypt(),
                     NomeCompleto = "Administrador do Sistema",
                     DataNascimento = DateTime.Now.AddYears(-25),
                     UsuarioPerfilId = perfilAdmin.Id

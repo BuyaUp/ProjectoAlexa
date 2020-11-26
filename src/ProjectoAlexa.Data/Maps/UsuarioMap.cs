@@ -23,9 +23,8 @@ namespace ProjectoAlexa.Data.Maps
             //Colunas
             Property(col => col.Id)
                 .HasColumnType("varchar")
-                .HasMaxLength(200)
-                .HasColumnName("UsuarioId")
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+                .HasColumnName("UsuarioId");
+                //.HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             Property(col => col.NomeUsuario)
                 .HasColumnType("varchar")

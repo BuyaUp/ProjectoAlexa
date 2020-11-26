@@ -1,0 +1,116 @@
+﻿@model ProjectoAlexa.Web.ViewModels.RegistarViewModel
+
+@{
+    ViewBag.Title = "Candidatura";
+    Layout = "~/Views/Shared/_LayoutCandidato.cshtml";
+}
+
+<html>
+<head>
+    <title>@ViewBag.Title - MINEA</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/fontawesome-all.css" rel="stylesheet" />
+</head>
+<body class="criar-bg">
+
+    <div class="row m-3">
+
+        <div class="col-md-12">
+            <center>
+                <div class="col-md-8">
+                    <div class="card text-left">
+                        <div class="card-header bg-info text-white text-center">
+                            <h2>@ViewBag.Title</h2>
+                        </div>
+                        <div class="card-body">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="form-horizontal">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h5>Dados Pessoais</h5>
+                                            <hr />
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Foto</label>
+                                                <div class="">
+                                                    @Html.TextBoxFor(model => model.Foto, new { @class = "form-control", type = "file" })
+                                                    <small>
+                                                        @Html.ValidationMessageFor(model => model.Foto, "", new { @class = "text-danger" })
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5>Documentos</h5>
+                                        <hr />
+                                    </div>
+                                    <div class=" col-md-6">
+                                        <div class="form-group">
+                                            <label>Cópia do BI</label>
+                                            <div class="">
+                                                @Html.TextBoxFor(model => model.CopiaBI, new { @class = "form-control", type = "file" })
+                                                <small>
+                                                    @Html.ValidationMessageFor(model => model.CopiaBI, "", new { @class = "text-danger" })
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Certificado</label>
+                                            <div class="">
+                                                @Html.TextBoxFor(model => model.CertificadoHabilitacoes, new { @class = "form-control", type = "file" })
+                                                <small>
+                                                    @Html.ValidationMessageFor(model => model.CertificadoHabilitacoes, "", new { @class = "text-danger" })
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Carta para o ministro</label>
+                                            <div class="">
+                                                @Html.TextBoxFor(model => model.CartaMinistro, new { @class = "form-control", type = "file" })
+                                                <small>
+                                                    @Html.ValidationMessageFor(model => model.CartaMinistro, "", new { @class = "text-danger" })
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Efetuar candidatura" class="btn btn-info" />
+                                    </div>
+                                </div>
+
+                            }
+
+                        </div>
+                    </div>
+
+                </div>
+            </center>
+        </div>
+
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</body>
+</html>
+
+
+

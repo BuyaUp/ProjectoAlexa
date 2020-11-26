@@ -13,7 +13,6 @@
 </head>
 <body class="login-bg">
 
-
     <div class="row">
 
         <div class="col-md-12 text-center">
@@ -36,9 +35,9 @@
 
                                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                     <div class="form-group">
-                                        <span class="fas fa-user-alt"></span> <label>Nome de Usuário</label>
+                                        <span class="fas fa-user-alt"></span> <label>Email</label>
                                         <div class="">
-                                            @Html.TextBoxFor(model => model.NomeUsuario, new { @class = "form-control" })
+                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
                                             <small>
                                                 @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
                                             </small>
@@ -48,7 +47,7 @@
                                     <div class="form-group">
                                         <span class="fas fa-key"></span> <label>Senha</label>
                                         <div class="">
-                                            @Html.TextBoxFor(model => model.Senha, new { @class = "form-control" })
+                                            @Html.PasswordFor(model => model.Senha, new { @class = "form-control" })
                                             <small>
                                                 @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
                                             </small>
@@ -75,9 +74,6 @@
                 </div>
             </center>
         </div>
-
-
-
     </div>
 
 
@@ -87,7 +83,5 @@
     }
 </body>
 </html>
-
-
 
 

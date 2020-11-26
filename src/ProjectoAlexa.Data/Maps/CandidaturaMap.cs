@@ -23,8 +23,7 @@ namespace ProjectoAlexa.Data.Maps
             Property(col => col.Id)
                 .HasColumnType("varchar")
                 .HasMaxLength(200)
-                .HasColumnName("CandidaturaId")
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+                .HasColumnName("CandidaturaId");
 
             // Relacionamentos
             HasRequired(prod => prod.AreaCandidatura) //tabela primária ou PK

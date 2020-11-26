@@ -1,5 +1,4 @@
-﻿using ProjectoAlexa.Data.DataContexts;
-using ProjectoAlexa.Web.ViewModels;
+﻿using ProjectoAlexa.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using System.Data.Entity;
-using AutoMapper;
 using ProjectoAlexa.Data.Entities;
+using ProjectoAlexa.Data.Repositorios;
 
 namespace ProjectoAlexa.Web.Controllers
 {
@@ -29,9 +28,9 @@ namespace ProjectoAlexa.Web.Controllers
                 return View(viewModel);
             else
             {
-                viewModel.UsuarioPerfilId = UsuarioPerfil.BuscarPeloNome("Usuário").Id;
-                var vm = Mapper.Map<Usuario>(viewModel);
-                var id = vm.Salvar();
+                viewModel.UsuarioPerfilId = UsuarioPerfilRepositorio.BuscarPeloNome("Usuário").Id;
+
+                var id = UsuarioRepositorio.Salvar(Mapper.Map<Usuario>(viewModel));
 
                 if (string.IsNullOrEmpty(id))
                     return View(viewModel);
@@ -50,7 +49,7 @@ namespace ProjectoAlexa.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var usuario = Usuario.ValidarUsuario(model.NomeUsuario, model.Senha);
+                var usuario = UsuarioRepositorio.ValidarUsuario(model.Email, model.Senha);
 
                 if (usuario == null)
                 {
@@ -77,7 +76,12 @@ namespace ProjectoAlexa.Web.Controllers
 
                     HttpContext.Response.Cookies.Add(authCookie);
 
-                    // Success("Bem-vindo!");
+                    if (usuario.UsuarioPerfil.PerfilNome.Contains("Administrador"))
+                        return RedirectToAction("Perfil", "Admin");
+                    else if (usuario.UsuarioPerfil.PerfilNome.Contains("Usuário"))
+                        return RedirectToAction("Perfil", "Usuario");
+
+
                     return RedirectToAction("Index", "Home");
                 }
             }

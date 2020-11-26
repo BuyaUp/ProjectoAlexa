@@ -10,12 +10,7 @@ namespace ProjectoAlexa.Web.ViewModels
     public class RegistarViewModel
     {
         #region Dados de Acesso
-        public RegistarViewModel()
-        {
-            Id = Guid.NewGuid().ToString();
-        }
-
-        public string Id { get; set; }
+        //public string UsuarioId { get; set; }
         public string NomeUsuario { get; set; } = "";
 
         [Required(ErrorMessage = "{0} campo obrigatório!")]
@@ -38,12 +33,11 @@ namespace ProjectoAlexa.Web.ViewModels
         public int UsuarioPerfilId { get; set; }
         #endregion
 
-
         #region Dados Pessoais e Documentos
 
         [Required(ErrorMessage = "{0} campo obrigatório!")]
         [Display(Name = "Nome Completo")]
-        public string NomeCompleto { get; set; }
+        public string NomeCompleto { get; set; } = "Alexandra Da Paixão";
 
         [Required(ErrorMessage = "{0} campo obrigatório!")]
         [Display(Name = "Gênero")]
@@ -67,7 +61,5 @@ namespace ProjectoAlexa.Web.ViewModels
 
         public int MunicipioId { get; set; } = 0;
         #endregion
-
-
     }
 }

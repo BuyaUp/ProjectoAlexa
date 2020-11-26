@@ -1,7 +1,7 @@
 ﻿@model ProjectoAlexa.Web.ViewModels.RegistarViewModel
 
 @{
-    ViewBag.Title = "Candidatura";
+    ViewBag.Title = "Criar Conta";
 }
 
 <html>
@@ -18,7 +18,6 @@
         <div class="col-md-12">
             <center>
                 <div class="col-md-8">
-
                     <div class="card text-left">
                         <div class="card-header bg-info text-white text-center">
                             <h2>@ViewBag.Title</h2>
@@ -28,36 +27,63 @@
                             {
                                 @Html.AntiForgeryToken()
                                 <div class="form-horizontal">
-
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <h5>Dados Pessoais</h5>
+                                            <h5>Dados da Conta</h5>
                                             <hr />
                                         </div>
                                         <div class="col-md-5">
-                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
                                             <div class="form-group">
-                                                <label>Nome completo</label>
+                                                <label>Email</label>
                                                 <div class="">
-                                                    @Html.TextBoxFor(model => model.NomeCompleto, new { @class = "form-control" })
+                                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
                                                     <small>
-                                                        @Html.ValidationMessageFor(model => model.NomeCompleto, "", new { @class = "text-danger" })
+                                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                                     </small>
                                                 </div>
                                             </div>
                                         </div>
 
 
+                                        <div class=" col-md-3">
+                                            <div class="form-group">
+                                                <label>Senha</label>
+                                                <div class="">
+                                                    @Html.TextBoxFor(model => model.Senha, new { @class = "form-control", type = "password" })
+                                                    <small>
+                                                        @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+                                                    </small>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Confirmar senha</label>
+                                                <div class="">
+                                                    @Html.TextBoxFor(model => model.ConfirmarSenha, new { @class = "form-control", type = "password" })
+                                                    <small>
+                                                        @Html.ValidationMessageFor(model => model.ConfirmarSenha, "", new { @class = "text-danger" })
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h5>Dados Pessoais</h5>
+                                            <hr />
+                                        </div>
+
+
+
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Gênero</label>
                                                 <div class="">
-                                                    <select class="form-control" name="Genero">
-                                                        <option>Masculino</option>
-                                                        <option>Femenino</option>
-                                                    </select>
-
-                                                    @*@Html.TextBoxFor(model => model.Genero, new { @class = "form-control" })*@
+                                                    @*@Html.DropDownListFor(model => model.Genero,new SelectList(ViewBag.FonteDeDados,"Id","Descricao"), new { @class = "form-control" })*@
                                                     <small>
                                                         @Html.ValidationMessageFor(model => model.Genero, "", new { @class = "text-danger" })
                                                     </small>
@@ -77,113 +103,43 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
 
-                                        <div class="col-md-6">
+
+                                <div class="row">
+
+                                    @*<div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Foto</label>
+                                                <label>Certificado</label>
                                                 <div class="">
-                                                    @Html.TextBoxFor(model => model.Foto, new { @class = "form-control", type = "file" })
+                                                    @Html.TextBoxFor(model => model.CertificadoHabilitacoes, new { @class = "form-control", type = "file" })
                                                     <small>
-                                                        @Html.ValidationMessageFor(model => model.Foto, "", new { @class = "text-danger" })
+                                                        @Html.ValidationMessageFor(model => model.CertificadoHabilitacoes, "", new { @class = "text-danger" })
                                                     </small>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h5>Dados da Conta</h5>
-                                        <hr />
-                                    </div>
-                                    <div class="col-md-5">
-
-                                        <div class="form-group">
-                                            <label>Email</label>
-                                            <div class="">
-                                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
-                                                <small>
-                                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                                                </small>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Carta para o ministro</label>
+                                                <div class="">
+                                                    @Html.TextBoxFor(model => model.CartaMinistro, new { @class = "form-control", type = "file" })
+                                                    <small>
+                                                        @Html.ValidationMessageFor(model => model.CartaMinistro, "", new { @class = "text-danger" })
+                                                    </small>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                        </div>*@
 
-
-                                    <div class=" col-md-3">
-                                        <div class="form-group">
-                                            <label>Senha</label>
-                                            <div class="">
-                                                @Html.TextBoxFor(model => model.Senha, new { @class = "form-control", type = "password" })
-                                                <small>
-                                                    @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
-                                                </small>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label>Confirmar senha</label>
-                                            <div class="">
-                                                @Html.TextBoxFor(model => model.ConfirmarSenha, new { @class = "form-control", type = "password" })
-                                                <small>
-                                                    @Html.ValidationMessageFor(model => model.ConfirmarSenha, "", new { @class = "text-danger" })
-                                                </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h5>Documentos</h5>
-                                        <hr />
-                                    </div>
-                                    <div class=" col-md-6">
-                                        <div class="form-group">
-                                            <label>Cópia do BI</label>
-                                            <div class="">
-                                                @Html.TextBoxFor(model => model.CopiaBI, new { @class = "form-control", type = "file" })
-                                                <small>
-                                                    @Html.ValidationMessageFor(model => model.CopiaBI, "", new { @class = "text-danger" })
-                                                </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Certificado</label>
-                                            <div class="">
-                                                @Html.TextBoxFor(model => model.CertificadoHabilitacoes, new { @class = "form-control", type = "file" })
-                                                <small>
-                                                    @Html.ValidationMessageFor(model => model.CertificadoHabilitacoes, "", new { @class = "text-danger" })
-                                                </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Carta para o ministro</label>
-                                            <div class="">
-                                                @Html.TextBoxFor(model => model.CartaMinistro, new { @class = "form-control", type = "file" })
-                                                <small>
-                                                    @Html.ValidationMessageFor(model => model.CartaMinistro, "", new { @class = "text-danger" })
-                                                </small>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="col-md-offset-2 col-md-10">
-                                        <input type="submit" value="Enviar Candidatura" class="btn btn-info" />
+                                        <input type="submit" value="Registrar-se" class="btn btn-info" />
                                     </div>
                                 </div>
-
                             }
-
                         </div>
                     </div>
 
@@ -198,6 +154,4 @@
     }
 </body>
 </html>
-
-
 

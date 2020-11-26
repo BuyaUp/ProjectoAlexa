@@ -60,6 +60,7 @@
     <Compile Include="Entities\Exame.cs" />
     <Compile Include="Entities\Pergunta.cs" />
     <Compile Include="Entities\Provincia.cs" />
+    <Compile Include="Entities\Questionario.cs" />
     <Compile Include="Entities\Resposta.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Entities\UsuarioPerfil.cs" />
@@ -72,23 +73,21 @@
     <Compile Include="Maps\RespostaMap.cs" />
     <Compile Include="Maps\UsuarioMap.cs" />
     <Compile Include="Maps\UsuarioPerfilMap.cs" />
-    <Compile Include="Migrations\202010301611000_AddOrUpdateTables.cs" />
-    <Compile Include="Migrations\202010301611000_AddOrUpdateTables.designer.cs">
-      <DependentUpon>202010301611000_AddOrUpdateTables.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\AreaCandidaturaRepositorio.cs" />
+    <Compile Include="Repositorios\CandidaturaRepositorio.cs" />
+    <Compile Include="Repositorios\Questionarios\PerguntaRepositorio.cs" />
+    <Compile Include="Repositorios\Questionarios\RespostaRepositorio.cs" />
+    <Compile Include="Repositorios\UsuarioPerfilRepositorio.cs" />
+    <Compile Include="Repositorios\UsuarioRepositorio.cs" />
+    <Compile Include="Seeds\ProvinciaSeed.cs" />
     <Compile Include="Seeds\UsuarioPerfilSeed.cs" />
     <Compile Include="Seeds\UsuarioSeed.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202010301611000_AddOrUpdateTables.resx">
-      <DependentUpon>202010301611000_AddOrUpdateTables.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

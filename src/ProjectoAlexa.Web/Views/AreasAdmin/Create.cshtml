@@ -1,0 +1,53 @@
+﻿@model ProjectoAlexa.Web.ViewModels.AreaCandidaturaViewModel
+@{
+    ViewBag.Title = "Adicionar Área";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <!-- Column -->
+    <div class="col-lg-8 col-xlg-9 col-md-7">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm())
+                {
+                <form class="form-horizontal form-material">
+                    @if (Model != null)
+                    {
+                        <input type="text" hidden value="@Model.Id" />
+                        <div class="form-group">
+                            <label class="col-md-12 mb-0">Descrição Area</label>
+                            <div class="col-md-12">
+                                <input type="text" value="@Model.AreaNome" name="AreaNome" placeholder="Escreva aqui..."
+                                       class="form-control pl-0 form-control-line">
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group">
+                            <label class="col-md-12 mb-0">Descrição Area</label>
+                            <div class="col-md-12">
+                                <input type="text" name="AreaNome" placeholder="Escreva aqui..."
+                                       class="form-control pl-0 form-control-line">
+                            </div>
+                        </div>
+
+                    }
+
+
+                    <div class="form-group">
+                        <div class="col-sm-12 d-flex">
+                            <button class="btn btn-success mx-auto mx-md-0 text-white">
+                                Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                }
+
+            </div>
+        </div>
+    </div>
+    <!-- Column -->
+</div>

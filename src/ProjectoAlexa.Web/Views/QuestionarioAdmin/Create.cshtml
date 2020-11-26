@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Adicionar Questionário";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<div class="row">
+    <!-- Column -->
+    <div class="col-lg-8 col-xlg-9 col-md-7">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm())
+                {
+                <form class="form-horizontal form-material">
+                    <div class="form-group">
+                        <h6 class="col-md-6 mb-0">Título</h6>
+                        <div class="col-md-12">
+                            <input type="text" name="AreaNome" placeholder="Escreva aqui..."
+                                   class="form-control pl-0 form-control-line">
+                        </div>
+                    </div>
+                    <h6 class="col-md-12 mb-0">Perguntas</h6>
+                    <hr />
+                    <div class="form-group">
+                        <div class="col-md-12 mb-0">
+                            <button class="btn btn-success"><span class="mdi mdi-plus"></span></button>
+                        </div>
+                    </div>
+
+                    <hr />
+                    <div class="form-group">
+                        <div class="col-sm-12 d-flex">
+                            <button class="btn btn-success mx-auto mx-md-0 text-white">
+                                Criar questionário
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                }
+
+            </div>
+        </div>
+    </div>
+    <!-- Column -->
+</div>

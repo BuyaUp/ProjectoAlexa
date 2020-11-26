@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Areas";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<a href="@Url.Action("Create")" class="btn btn-info">Adicionar Nova</a>
+
+<div class="row mt-4">
+    <!-- column -->
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Lista de Áreas</h4>
+                <h6 class="card-subtitle"><hr /></h6>
+                <div class="table-responsive">
+                    <table class="table user-table">
+                        <thead>
+                            <tr>
+                                <th class="border-top-0">#</th>
+                                <th class="border-top-0">Descrição</th>
+                                <th class="border-top-0">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var area in Model)
+                            {
+                                <tr>
+                                    <td>@area.Id</td>
+                                    <td>@area.AreaNome</td>
+                                    <td>
+                                        <a href="@Url.Action("Create", new { id = area.Id })" class="btn btn-info"><span class="fas fa-edit"></span> Editar</a>
+                                        <a href="#" class="btn btn-danger"><span class="fas fa-trash-alt"></span> Eliminar</a>
+                                    </td>
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
