@@ -2,14 +2,21 @@
 using ProjectoAlexa.Data.Repositorios;
 using ProjectoAlexa.Data.Repositorios.Questionarios;
 using ProjectoAlexa.Web.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace ProjectoAlexa.Web.Controllers.Admin
 {
+    [Authorize]
     public class QuestionarioAdminController : BaseController
     {
         List<RespostaViewModel> ListaRespostas = new List<RespostaViewModel>();
+
+        public QuestionarioAdminController()
+        {
+
+        }
 
         // GET: QuestionarioAdmin
         public ActionResult Index()
@@ -21,9 +28,21 @@ namespace ProjectoAlexa.Web.Controllers.Admin
             return View(questionarios);
         }
 
+        [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.AreaCandidaturas = AreaCandidaturaRepositorio.BuscarTodas();
+            var areas = AreaCandidaturaRepositorio.BuscarTodas();
+            var questionaTemp = new Questionario
+            {
+                AreaCandidaturaId = areas[0].Id,
+                Titulo = string.Empty,
+                UsuarioId = UsuarioRepositorio.BuscarPeloEmail(User.Identity.Name).Id,
+                DataCadastro = DateTime.Now,
+                Ativo = false
+            };
+
+            ViewBag.QuestionarioId = QuestionarioRepositorio.Salvar(questionaTemp);
+            ViewBag.AreaCandidaturas = areas;
             return View();
         }
 
@@ -37,7 +56,7 @@ namespace ProjectoAlexa.Web.Controllers.Admin
 
         public JsonResult GetRespostas()
         {
-            
+
             return Json(ListaRespostas, JsonRequestBehavior.AllowGet);
         }
     }

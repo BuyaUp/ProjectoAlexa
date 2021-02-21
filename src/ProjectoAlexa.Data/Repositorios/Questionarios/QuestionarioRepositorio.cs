@@ -30,7 +30,7 @@ namespace ProjectoAlexa.Data.Repositorios.Questionarios
 
             using (var db = new ProjectoBaseDataContext())
             {
-                ret = db.Questionarios.ToList();
+                ret = db.Questionarios.Include(a => a.AreaCandidatura).ToList();
             }
 
             return ret;

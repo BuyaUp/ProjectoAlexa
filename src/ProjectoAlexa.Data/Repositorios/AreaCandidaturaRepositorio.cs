@@ -11,9 +11,9 @@ namespace ProjectoAlexa.Data.Repositorios
 {
     public class AreaCandidaturaRepositorio
     {
-        public static AreaCandidatura BuscarPeloId(int ?id)
+        public static AreaCandidatura BuscarPeloId(int? id)
         {
-           AreaCandidatura ret = null;
+            AreaCandidatura ret = null;
 
             using (var db = new ProjectoBaseDataContext())
             {

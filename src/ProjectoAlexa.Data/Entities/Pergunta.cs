@@ -9,6 +9,7 @@ namespace ProjectoAlexa.Data.Entities
     public class Pergunta : Entity<int>
     {
         public string Descricao { get; set; }
+        public int Pontos { get; set; }
         public int QuestionarioId { get; set; }
         public virtual Questionario Questionario { get; set; }
 

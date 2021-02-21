@@ -14,6 +14,7 @@
                 @using (Html.BeginForm())
                 {
                     <form class="form-horizontal form-material">
+                        <input type="hidden" name="questionarioId" value="@ViewBag.QuestionarioId" />
                         <div class="form-group">
                             <h6 class="col-md-6 mb-0">Título</h6>
                             <div class="col-md-12 mt-2">
@@ -34,26 +35,11 @@
                                 </select>
                             </div>
                         </div>
-                        <h6 class="col-md-12 mb-0">Perguntas</h6>
+                        <h6 class="col-md-12 mb-0">Perguntas Total - @ViewBag.TotalPerguntas</h6>
                         <hr />
                         <div class="form-group">
                             <div class="col-md-12 p-2" id="AreaPergunta">
-                                <div class="row">
-                                    <div class="col-md-7">
-                                        <b>1 - Qual a capital de Angola?</b>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button class="btn btn-danger btn-sm" style="margin-left:200px;">&times;</button>
-                                    </div>
-                                    <div class="ml-4 col-md-10">
-                                        <div class="row">
-                                            <input class="form-control col-8" type="text" value="Luanda" /> <input class="form-control col-2" type="checkbox" />
-
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12"><hr /></div>
-                                </div>
-
+                               
                             </div>
                         </div>
 
@@ -101,7 +87,7 @@
                     <form class="col-md-12">
                         <div class="form-group">
                             <label><b>Pergunta</b></label>
-                            <textarea class="form-control"></textarea>
+                            <textarea class="form-control" id="pergunta"></textarea>
                         </div>
                         <hr />
                         <div class="row" id="AreaResposta">

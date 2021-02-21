@@ -29,9 +29,9 @@
                             {
                                 <tr>
                                     <td>@questionario.Id</td>
-                                    <td>@questionario.AreaNome</td>
-                                    <td>@questionario.Usuario.Nome</td>
-                                    <td>@questionario.AreaCandidatura.Nome</td>
+                                    <td>@questionario.Titulo</td>
+                                    <td>@questionario.UsuarioId</td>
+                                    <td>@questionario.AreaCandidatura.AreaNome</td>
                                     <td>
                                         <a href="@Url.Action("Detalhes","QuestionarioAdmin")" class="btn btn-success text-white"><span class="mdi mdi-information"></span> Detalhes</a>
                                         <a href="@Url.Action("Editar","QuestionarioAdmin")" class="btn btn-info"><span class="fas fa-edit"></span> Editar</a>
