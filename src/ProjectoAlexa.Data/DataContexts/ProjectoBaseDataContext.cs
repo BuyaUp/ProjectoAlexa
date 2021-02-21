@@ -27,9 +27,8 @@ namespace ProjectoAlexa.Data.DataContexts
         public DbSet<Resposta> Respostas { get; set; }
         public DbSet<Candidatura> Candidaturas { get; set; }
         public DbSet<AreaCandidatura> AreaCandidaturas { get; set; }
-        public DbSet<Documento> Documentos { get; set; }
         public DbSet<Provincia> Provincias { get; set; }
-        public DbSet<Questionario> Questionarios  { get; set; }
+        public DbSet<Questionario> Questionarios { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) //Criar BD usando fluent API
         {
@@ -52,10 +51,10 @@ namespace ProjectoAlexa.Data.DataContexts
 
             modelBuilder.Configurations.Add(new Maps.AreaCandidaturaMap());
             modelBuilder.Configurations.Add(new Maps.CandidaturaMap());
-            modelBuilder.Configurations.Add(new Maps.DocumentoMap());
 
             modelBuilder.Configurations.Add(new Maps.PerguntaMap());
             modelBuilder.Configurations.Add(new Maps.RespostaMap());
+            modelBuilder.Configurations.Add(new Maps.QuestionarioMap());
 
             modelBuilder.Configurations.Add(new Maps.ProvinciaMap());
         }

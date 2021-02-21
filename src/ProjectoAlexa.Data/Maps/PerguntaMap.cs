@@ -24,14 +24,15 @@ namespace ProjectoAlexa.Data.Maps
                 .HasColumnName("PerguntaId")
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
-            //Relacionamentos
-            HasRequired(prod => prod.AreaCandidatura) //tabela primária ou PK
-                .WithMany(tipo => tipo.Perguntas) //tabela secundária ou que recebe a FK
-                .HasForeignKey(fk => fk.AreaCandidaturaId); // chave estrangeira
+            Property(p => p.Descricao)
+                .IsRequired()
+                .HasMaxLength(100)
+                .HasColumnType("varchar");
 
-            HasRequired(prod => prod.Usuario) //tabela primária ou PK
-               .WithMany(tipo => tipo.Perguntas) //tabela secundária ou que recebe a FK
-               .HasForeignKey(fk => fk.UsuarioId); // chave estrangeira
+            //Relacionamentos
+            HasRequired(prod => prod.Questionario) //tabela primária ou PK
+                .WithMany(tipo => tipo.Perguntas) //tabela secundária ou que recebe a FK
+                .HasForeignKey(fk => fk.QuestionarioId); // chave estrangeira
         }
     }
 }

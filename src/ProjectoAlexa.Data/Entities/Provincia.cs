@@ -14,5 +14,7 @@ namespace ProjectoAlexa.Data.Entities
         }
 
         public string ProvinciaNome { get; set; }
+
+        public ICollection<Candidatura> Candidaturas { get; set; }
     }
 }

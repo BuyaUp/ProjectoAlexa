@@ -11,5 +11,6 @@ namespace ProjectoAlexa.Data.Entities
         public string AreaNome { get; set; }
         public virtual ICollection<Pergunta> Perguntas { get; set; }
         public virtual ICollection<Candidatura> Candidaturas  { get; set; }
+        public virtual ICollection<Questionario> Questionarios { get; set; }
     }
 }

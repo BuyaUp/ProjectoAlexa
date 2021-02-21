@@ -72,6 +72,20 @@ namespace ProjectoAlexa.Data.Repositorios
             return ret;
         }
 
+        public static List<Candidatura> BuscarPeloUsuarioId(string id)
+        {
+            var ret = new List<Candidatura>();
+
+
+            using (var db = new ProjectoBaseDataContext())
+            {
+                ret = db.Candidaturas.Where(u => u.UsuarioId == id)
+                     .ToList();
+            }
+
+            return ret;
+        }
+
 
         public static bool ExcluirPeloId(string id)
         {

@@ -21,6 +21,7 @@
             UsuarioPerfilSeed.Seed(context);
             UsuarioSeed.Seed(context);
             ProvinciaSeed.Seed(context);
+            AreaSeed.Seed(context);
         }
     }
 }

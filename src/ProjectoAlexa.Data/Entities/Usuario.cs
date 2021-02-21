@@ -25,8 +25,11 @@ namespace ProjectoAlexa.Data.Entities
         public DateTime DataNascimento { get; set; }
         public int UsuarioPerfilId { get; set; }
 
+        public string Genero { get; set; }
+
         public virtual ICollection<Pergunta> Perguntas { get; set; }
         public virtual ICollection<Candidatura> Candidaturas { get; set; }
+        public virtual ICollection<Questionario> Questionarios { get; set; }
         public virtual UsuarioPerfil UsuarioPerfil { get; set; }
 
         #endregion

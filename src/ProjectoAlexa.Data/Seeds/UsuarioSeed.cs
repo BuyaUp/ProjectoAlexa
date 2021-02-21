@@ -31,8 +31,8 @@ namespace ProjectoAlexa.Data.Seeds
                     Senha = "master".Encrypt(),
                     NomeCompleto = "Administrador do Sistema",
                     DataNascimento = DateTime.Now.AddYears(-25),
-                    UsuarioPerfilId = perfilAdmin.Id
-                    //UsuarioPerfil = perfilAdmin
+                    UsuarioPerfilId = perfilAdmin.Id,
+                    Genero = "M"
                 }
                 );
         }

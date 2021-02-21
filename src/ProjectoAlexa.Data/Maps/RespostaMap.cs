@@ -23,6 +23,19 @@ namespace ProjectoAlexa.Data.Maps
             Property(col => col.Id)
                 .HasColumnName("RespostaId")
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+            Property(col => col.Descricao)
+                .IsRequired()
+                .HasMaxLength(100)
+                .HasColumnType("varchar");
+
+            Property(col => col.PerguntaId)
+                .IsRequired();
+
+            //Relacionamentos 
+            HasRequired(p => p.Pergunta)
+                .WithMany(p => p.Respostas)
+                .HasForeignKey(fk => fk.PerguntaId);
         }
     }
 }

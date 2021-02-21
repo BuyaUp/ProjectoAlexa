@@ -80,6 +80,20 @@ namespace ProjectoAlexa.Data.Repositorios
             return ret;
         }
 
+
+        public static Usuario BuscarPeloEmail(string email)
+        {
+            Usuario ret = null;
+
+            using (var db = new ProjectoBaseDataContext())
+            {
+                ret = db.Usuarios.Where(u => u.Email == email).FirstOrDefault();
+            }
+
+            return ret;
+        }
+
+
         public static bool ExcluirPeloId(string id)
         {
             var ret = false;

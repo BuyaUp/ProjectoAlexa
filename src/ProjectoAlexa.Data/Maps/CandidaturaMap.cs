@@ -30,13 +30,13 @@ namespace ProjectoAlexa.Data.Maps
                 .WithMany(tipo => tipo.Candidaturas) //tabela secundária ou que recebe a FK
                 .HasForeignKey(fk => fk.AreaCandidaturaId);
 
-            HasRequired(prod => prod.Documento) //tabela primária ou PK
-                .WithMany(tipo => tipo.Candidaturas) //tabela secundária ou que recebe a FK
-                .HasForeignKey(fk => fk.DocumentosId);
-
             HasRequired(prod => prod.Usuario) //tabela primária ou PK
                 .WithMany(tipo => tipo.Candidaturas) //tabela secundária ou que recebe a FK
                 .HasForeignKey(fk => fk.UsuarioId);
+
+            HasRequired(prod => prod.Provincia) //tabela primária ou PK
+                .WithMany(tipo => tipo.Candidaturas) //tabela secundária ou que recebe a FK
+                .HasForeignKey(fk => fk.ProvinciaId);
         }
     }
 }

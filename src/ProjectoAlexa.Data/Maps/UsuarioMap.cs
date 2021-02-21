@@ -45,6 +45,11 @@ namespace ProjectoAlexa.Data.Maps
                 .HasMaxLength(88)
                 .IsRequired();
 
+            Property(col => col.Genero)
+                .HasColumnType("varchar")
+                .HasMaxLength(10)
+                .IsRequired();
+
             Property(col => col.DataCadastro);
             Property(col => col.Ativo);
 
