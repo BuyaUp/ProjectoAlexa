@@ -28,12 +28,16 @@
                 <li class="nav-item active">
                     <div class="dropdown">
                         <a class="dropdown-toggle nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="fas fa-user-circle"></span> Seja bem-vindo(a) @User.Identity.Name
+                            <span id="UsuarioAtualDados" class="fas fa-user-circle"></span> Seja bem-vindo(a)
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="@Url.Action("Perfil","Usuario")">Perfil</a>
-                            <a class="dropdown-item" href="#">Sair</a>
+                            @using (Html.BeginForm("LogOut", "Conta", new { Area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Sair</a>
+                            }
                         </div>
                     </div>
                 </li>
@@ -50,8 +54,32 @@
     </div>
 
 
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script>
+        $(function () {
+            $('#dropdownMenuLink').load('/Usuario/UsuarioAtual', function () {
+
+            });
+
+            $('.alert').alert();
+
+            $(document).ready(
+                function () {
+                    var ultimaCand = $('.UsuarioAtualDados');
+                    debugger
+                    if (ultimaCand != null && ultimaCand == '@DateTime.Now.Year') {
+                        alert('Ultima candidatura foi em ' + ultimaCand);
+                    }
+                });
+
+
+        });
+
+
+    </script>
 </body>
 </html>

@@ -32,9 +32,19 @@
                                             <h5>Dados da Conta</h5>
                                             <hr />
                                         </div>
-                                        <div class="col-md-5">
 
-                                            <div class="form-group">
+                                        <div class="form-row col-md-12">
+                                            <div class="form-group col">
+                                                <label>Nome Completo</label>
+                                                <div class="">
+                                                    @Html.TextBoxFor(model => model.NomeCompleto, new { @class = "form-control" })
+                                                    <small>
+                                                        @Html.ValidationMessageFor(model => model.NomeCompleto, "", new { @class = "text-danger" })
+                                                    </small>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col">
                                                 <label>Email</label>
                                                 <div class="">
                                                     @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
@@ -45,9 +55,8 @@
                                             </div>
                                         </div>
 
-
-                                        <div class=" col-md-3">
-                                            <div class="form-group">
+                                        <div class="form-row col-md-12">
+                                            <div class="form-group col">
                                                 <label>Senha</label>
                                                 <div class="">
                                                     @Html.TextBoxFor(model => model.Senha, new { @class = "form-control", type = "password" })
@@ -57,9 +66,7 @@
                                                 </div>
                                             </div>
 
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
+                                            <div class="form-group col">
                                                 <label>Confirmar senha</label>
                                                 <div class="">
                                                     @Html.TextBoxFor(model => model.ConfirmarSenha, new { @class = "form-control", type = "password" })
@@ -77,64 +84,40 @@
                                             <hr />
                                         </div>
 
-
-
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Gênero</label>
-                                                <div class="">
-                                                    @*@Html.DropDownListFor(model => model.Genero,new SelectList(ViewBag.FonteDeDados,"Id","Descricao"), new { @class = "form-control" })*@
-                                                    <small>
-                                                        @Html.ValidationMessageFor(model => model.Genero, "", new { @class = "text-danger" })
-                                                    </small>
+                                        <div class="form-row col-md-12">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Gênero</label>
+                                                    <div class="">
+                                                        @*@Html.DropDownListFor(model => model.Genero,new SelectList(ViewBag.FonteDeDados,"Id","Descricao"), new { @class = "form-control" })*@
+                                                        <select name="Genero" class="form-control">
+                                                            <option value="M">Masculino</option>
+                                                            <option value="F">Femenino</option>
+                                                        </select>
+                                                        <small>
+                                                            @Html.ValidationMessageFor(model => model.Genero, "", new { @class = "text-danger" })
+                                                        </small>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>
-                                                    Data de Nascimento
-                                                </label>
-                                                <div class="">
-                                                    @Html.TextBoxFor(model => model.DataNascimento, new { @class = "form-control", type = "date" })
-                                                    <small>
-                                                        @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
-                                                    </small>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>
+                                                        Data de Nascimento
+                                                    </label>
+                                                    <div class="">
+                                                        @Html.TextBoxFor(model => model.DataNascimento, new { @class = "form-control", type = "date" })
+                                                        <small>
+                                                            @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+                                                        </small>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-
-                                <div class="row">
-
-                                    @*<div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Certificado</label>
-                                                <div class="">
-                                                    @Html.TextBoxFor(model => model.CertificadoHabilitacoes, new { @class = "form-control", type = "file" })
-                                                    <small>
-                                                        @Html.ValidationMessageFor(model => model.CertificadoHabilitacoes, "", new { @class = "text-danger" })
-                                                    </small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Carta para o ministro</label>
-                                                <div class="">
-                                                    @Html.TextBoxFor(model => model.CartaMinistro, new { @class = "form-control", type = "file" })
-                                                    <small>
-                                                        @Html.ValidationMessageFor(model => model.CartaMinistro, "", new { @class = "text-danger" })
-                                                    </small>
-                                                </div>
-                                            </div>
-                                        </div>*@
-
-                                </div>
-
-                                <div class="form-group">
+                                <div class="form-row">
                                     <div class="col-md-offset-2 col-md-10">
                                         <input type="submit" value="Registrar-se" class="btn btn-info" />
                                     </div>

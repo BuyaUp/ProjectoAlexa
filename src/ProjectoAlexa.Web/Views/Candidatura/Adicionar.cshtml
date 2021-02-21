@@ -1,0 +1,152 @@
+﻿@model ProjectoAlexa.Web.ViewModels.CandidaturaViewModel
+
+@{
+    ViewBag.Title = "Candidatura";
+    Layout = "~/Views/Shared/_LayoutCandidato.cshtml";
+}
+
+<html>
+<head>
+    <title>@ViewBag.Title - MINEA</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/fontawesome-all.css" rel="stylesheet" />
+    <style>
+        .dynamicimg {
+            margin-right: 5px;
+            width: 150px;
+            height: 250px;
+            border-radius: 5%;
+        }
+    </style>
+</head>
+<body class="criar-bg">
+
+    <div class="row m-3">
+
+        <div class="col-md-12">
+            <center>
+                <div class="col-md-8">
+                    <div class="card text-left">
+                        <div class="card-header bg-info text-white text-center">
+                            <h2>@ViewBag.Title</h2>
+                        </div>
+                        <div class="card-body">
+                            @using (Html.BeginForm("Adicionar", "Candidatura", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="form-horizontal">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Selecione a área de candidatura</label>
+                                                <div class="">
+                                                    @Html.DropDownListFor(model => model.AreaCandidaturaId, new SelectList(ViewBag.Areas, "Id", "AreaNome"), "Seleccione a área", new { @class = "form-control", type = "file" })
+                                                    <small>
+                                                        @Html.ValidationMessageFor(model => model.AreaCandidaturaId, "", new { @class = "text-danger" })
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Província</label>
+                                                <div class="">
+                                                    @Html.DropDownListFor(model => model.ProvinciaId, new SelectList(ViewBag.Provincias, "Id", "ProvinciaNome"), "Seleccione a província", new { @class = "form-control", type = "file" })
+                                                    <small>
+                                                        @Html.ValidationMessageFor(model => model.ProvinciaId, "", new { @class = "text-danger" })
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col">
+                                        <label for="formControlFileBI">BI</label>
+                                        <input type="file" name="BIFile" class="form-control-file border border-info rounded p-2" id="formControlFileBI">
+                                    </div>
+
+                                    <div class="form-group col">
+                                        <label for="formControlFileCertificado">Certificado</label>
+                                        <input type="file" name="CertificadoFile" class="form-control-file border border-info rounded p-2" id="formControlFileCertificado">
+                                    </div>
+
+                                    <div class="form-group col">
+                                        <label for="formControlFileCarta">Carta para o ministro</label>
+                                        <input type="file" name="CartaFile" class="form-control-file border border-info rounded p-2" id="formControlFileCarta">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" name="upload" value="Efetuar candidatura" class="btn btn-info" />
+                                    </div>
+                                </div>
+
+                            }
+
+                        </div>
+                    </div>
+
+                </div>
+            </center>
+        </div>
+
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script>
+            var loadFile = function (event) {
+                $("#dynamicImage").empty();
+                var files = event.target.files;
+                for (var i = 0; i < files.length; i++) {
+                    $("#dynamicImage").append("<img src='" + URL.createObjectURL(event.target.files[i]) + "' class='dynamicimg' / >")
+                }
+            }
+        </script>
+    }
+</body>
+</html>
+
+
+
+
+@* <div class=" col-md-6">
+         <div class="form-group">
+             <label>Cópia do BI</label>
+             <div class="">
+                 @Html.TextBoxFor(model => model.CopiaBI, new { @class = "form-control", type = "file" })
+                 <small>
+                     @Html.ValidationMessageFor(model => model.CopiaBI, "", new { @class = "text-danger" })
+                 </small>
+             </div>
+         </div>
+     </div>
+    <div class="col-md-6">
+         <div class="form-group">
+             <label>Certificado</label>
+             <div class="">
+                 @Html.TextBoxFor(model => model.CertificadoHabilitacoes, new { @class = "form-control", type = "file" })
+                 <small>
+                     @Html.ValidationMessageFor(model => model.CertificadoHabilitacoes, "", new { @class = "text-danger" })
+                 </small>
+             </div>
+         </div>
+     </div>
+     <div class="col-md-12">
+         <div class="form-group">
+             <label>Carta para o ministro</label>
+             <div class="">
+                 @Html.TextBoxFor(model => model.CartaMinistro, new { @class = "form-control", type = "file" })
+                 <small>
+                     @Html.ValidationMessageFor(model => model.CartaMinistro, "", new { @class = "text-danger" })
+                 </small>
+             </div>
+         </div>
+     </div>*@
+

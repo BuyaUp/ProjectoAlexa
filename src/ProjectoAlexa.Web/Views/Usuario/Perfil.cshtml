@@ -1,9 +1,22 @@
-﻿
+﻿@model ProjectoAlexa.Web.ViewModels.UsuarioAtualViewModel
 @{
     ViewBag.Title = "Perfil";
     Layout = "~/Views/Shared/_LayoutCandidato.cshtml";
 }
 
+@{
+    var mensagem = TempData.ContainsKey("MsgAviso") ? (string)TempData["MsgAviso"] : "";
+
+    if (mensagem.Any())
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong> @mensagem</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+}
 
 <div class="row m-4">
     <div class="col-md-3">
@@ -16,12 +29,11 @@
                     <a class="btn btn-outline-warning" href="#"><span class="fas fa-image"></span></a>
                 </div>
                 <div class="card-body text-left">
-                    <h6>Nº Candidatura: <span class="text-info">00340f234gdf</span> </h6>
+                    <h6>Nº Candidatura: <span class="text-info">@Model.ultimaCandidaturaId</span> </h6>
                     <hr />
-                    <h6>Nome: ----------</h6>
-                    <h6>Nº BI: ----------</h6>
-                    <h6>Data de Nascimento: ----------</h6>
-                    <h6>Genero: ----------</h6>
+                    <h6>Nome: @Model.NomeCompleto</h6>
+                    <h6>Data de Nascimento: @Model.DataNascimento.ToShortDateString()</h6>
+
                     <hr />
                     <div class="text-center">
                         <a class="btn btn-warning" href="#">Ver meus documentos</a>
@@ -36,10 +48,12 @@
     <div class="col-md-8">
         <center>
             <div class="card">
-                <div>
 
-                </div>
-                <h4>Ainda não efetuou a sua candidatura. <a href="~/Usuario/Candidatura" class="text-warning">Candidatar-se »»</a></h4>
+                @if (Model.DataUltimaCandidatura != DateTime.Now.Year)
+                {
+                    <h4>Ainda não efetuou a sua candidatura. <a href="@Url.Action("Adicionar","Candidatura")" class="text-warning">Candidatar-se »»</a></h4>
+                }
+
             </div>
         </center>
 

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace ProjectoAlexa.Web.ViewModels
 {
@@ -13,6 +14,22 @@ namespace ProjectoAlexa.Web.ViewModels
 
         [Required(ErrorMessage = "Selecione o Area de candidatura.")]
         public int AreaCandidaturaId { get; set; }
-        public string DocumentosId { get; set; }
+
+        public string BI { get; set; }
+        public string Certificado { get; set; }
+        public string Carta { get; set; }
+
+
+        [Display(Name = "Cópia de BI")]
+        public HttpPostedFileBase BIFile { get; set; }
+
+        [Display(Name = "Certificado")]
+        public HttpPostedFileBase CertificadoFile { get; set; }
+
+        [Display(Name = "Carta p/ Ministro")]
+        public HttpPostedFileBase CartaFile { get; set; }
+
+        public string ProvinciaId { get; set; }
+
     }
 }

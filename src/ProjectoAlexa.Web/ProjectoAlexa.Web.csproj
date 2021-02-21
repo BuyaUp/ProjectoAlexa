@@ -141,11 +141,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FilesHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AreaCandidaturaViewModel.cs" />
     <Compile Include="ViewModels\CandidaturaViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\PerguntaViewModel.cs" />
+    <Compile Include="ViewModels\QuestionarioViewModel.cs" />
     <Compile Include="ViewModels\RegistarViewModel.cs" />
+    <Compile Include="ViewModels\RespostaViewModel.cs" />
+    <Compile Include="ViewModels\UsuarioAtualViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -1275,12 +1280,13 @@
     <Content Include="Templates\material-pro-lite-master\html\scss\widgets\profile.scss" />
     <Content Include="Templates\material-pro-lite-master\html\scss\widgets\steamline.scss" />
     <Content Include="Templates\material-pro-lite-master\html\scss\widgets\widgets.scss" />
+    <Content Include="Views\Shared\_UsuarioAtual.cshtml" />
+    <Content Include="Views\Candidatura\Adicionar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Candidatura\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

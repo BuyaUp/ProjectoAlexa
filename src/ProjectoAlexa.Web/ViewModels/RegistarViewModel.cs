@@ -9,14 +9,12 @@ namespace ProjectoAlexa.Web.ViewModels
 {
     public class RegistarViewModel
     {
-        #region Dados de Acesso
-        //public string UsuarioId { get; set; }
-        public string NomeUsuario { get; set; } = "";
+        public string NomeUsuario { get; set; }
 
         [Required(ErrorMessage = "{0} campo obrigatório!")]
         [EmailAddress]
         //[MaxLength(254, ErrorMessage = "O {0} deve ter no máximo {2} caracteres")]
-        [Display(Name = "Email")]
+        [Display(Name = "E-mail")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "{0} campo obrigatório!")]
@@ -31,13 +29,10 @@ namespace ProjectoAlexa.Web.ViewModels
         public string ConfirmarSenha { get; set; }
 
         public int UsuarioPerfilId { get; set; }
-        #endregion
-
-        #region Dados Pessoais e Documentos
 
         [Required(ErrorMessage = "{0} campo obrigatório!")]
         [Display(Name = "Nome Completo")]
-        public string NomeCompleto { get; set; } = "Alexandra Da Paixão";
+        public string NomeCompleto { get; set; }
 
         [Required(ErrorMessage = "{0} campo obrigatório!")]
         [Display(Name = "Gênero")]
@@ -47,19 +42,5 @@ namespace ProjectoAlexa.Web.ViewModels
         [Display(Name = "Data de Nascimento")]
         public DateTime DataNascimento { get; set; }
 
-        [Display(Name = "Fotográfia Tipo Passe")]
-        public string Foto { get; set; }
-
-        [Display(Name = "Cópia de BI")]
-        public string CopiaBI { get; set; }
-
-        [Display(Name = "Certificado")]
-        public string CertificadoHabilitacoes { get; set; }
-
-        [Display(Name = "Carta p/ Ministro")]
-        public string CartaMinistro { get; set; }
-
-        public int MunicipioId { get; set; } = 0;
-        #endregion
     }
 }

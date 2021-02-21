@@ -13,31 +13,69 @@
             <div class="card-body">
                 @using (Html.BeginForm())
                 {
-                <form class="form-horizontal form-material">
-                    <div class="form-group">
-                        <h6 class="col-md-6 mb-0">Título</h6>
-                        <div class="col-md-12">
-                            <input type="text" name="AreaNome" placeholder="Escreva aqui..."
-                                   class="form-control pl-0 form-control-line">
+                    <form class="form-horizontal form-material">
+                        <div class="form-group">
+                            <h6 class="col-md-6 mb-0">Título</h6>
+                            <div class="col-md-12 mt-2">
+                                <input type="text" name="AreaNome" placeholder="Escreva aqui..."
+                                       class="form-control pl-0 form-control-line">
+                            </div>
                         </div>
-                    </div>
-                    <h6 class="col-md-12 mb-0">Perguntas</h6>
-                    <hr />
-                    <div class="form-group">
-                        <div class="col-md-12 mb-0">
-                            <button class="btn btn-success"><span class="mdi mdi-plus"></span></button>
-                        </div>
-                    </div>
 
-                    <hr />
-                    <div class="form-group">
-                        <div class="col-sm-12 d-flex">
-                            <button class="btn btn-success mx-auto mx-md-0 text-white">
-                                Criar questionário
-                            </button>
+                        <div class="form-group">
+                            <h6 class="col-md-6 mb-0 mt-3">Área</h6>
+                            <div class="col-md-12 mt-2">
+                                <select name="AreaCandidaturaId" class="form-control pl-0 form-control-line">
+                                    @foreach (var areaCandidatura in ViewBag.AreaCandidaturas)
+                                    {
+                                        <option value="@areaCandidatura.Id">@areaCandidatura.AreaNome</option>
+
+                                    }
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                        <h6 class="col-md-12 mb-0">Perguntas</h6>
+                        <hr />
+                        <div class="form-group">
+                            <div class="col-md-12 p-2" id="AreaPergunta">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <b>1 - Qual a capital de Angola?</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button class="btn btn-danger btn-sm" style="margin-left:200px;">&times;</button>
+                                    </div>
+                                    <div class="ml-4 col-md-10">
+                                        <div class="row">
+                                            <input class="form-control col-8" type="text" value="Luanda" /> <input class="form-control col-2" type="checkbox" />
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12"><hr /></div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-md-12 mb-0">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                                    <span class="mdi mdi-plus"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <hr />
+                        <div class="form-group">
+                            <div class="col-sm-12 d-flex">
+                                <button class="btn btn-success mx-auto mx-md-0 text-white">
+                                    Criar questionário
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 }
 
             </div>
@@ -45,3 +83,55 @@
     </div>
     <!-- Column -->
 </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-cyan">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Nova Pergunta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <form class="col-md-12">
+                        <div class="form-group">
+                            <label><b>Pergunta</b></label>
+                            <textarea class="form-control"></textarea>
+                        </div>
+                        <hr />
+                        <div class="row" id="AreaResposta">
+                            <div class="col-md-12">
+                                <h6>Respostas</h6>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4"><a href="#" onclick="addResposta();" id="btnNovaResposta" class="btn btn-success text-white">Adicionar resposta <span class="fas fa-plus"></span></a></div>
+
+                    </form>
+
+
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button onclick="addPergunta()" type="button" class="btn btn-primary">Adicionar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/ScriptsDoProjecto/classes/Pergunta.js"></script>
+    <script src="~/Scripts/ScriptsDoProjecto/classes/Resposta.js"></script>
+    <script src="~/Scripts/ScriptsDoProjecto/questionario-add.js"></script>
+
+}

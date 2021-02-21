@@ -29,6 +29,7 @@ namespace ProjectoAlexa.Web.Controllers
             else
             {
                 viewModel.UsuarioPerfilId = UsuarioPerfilRepositorio.BuscarPeloNome("Usuário").Id;
+                viewModel.NomeUsuario = viewModel.Email;
 
                 var id = UsuarioRepositorio.Salvar(Mapper.Map<Usuario>(viewModel));
 
@@ -66,7 +67,7 @@ namespace ProjectoAlexa.Web.Controllers
 
                     var authTicket = new FormsAuthenticationTicket(
                         1,
-                        usuario.NomeUsuario, DateTime.Now, DateTime.Now.AddMinutes(30),
+                        usuario.Email, DateTime.Now, DateTime.Now.AddMinutes(30),
                         model.LembrarMe, usuario.UsuarioPerfil.PerfilNome,
                         FormsAuthentication.FormsCookiePath);
 
@@ -91,7 +92,7 @@ namespace ProjectoAlexa.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult LogOff()
+        public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
             Session.Clear();
