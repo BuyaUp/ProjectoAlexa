@@ -14,32 +14,35 @@
                 @using (Html.BeginForm())
                 {
                     <form class="form-horizontal form-material">
-                        <input type="hidden" name="questionarioId" value="@ViewBag.QuestionarioId" />
+                        <input type="hidden" id="questionarioId" name="questionarioId" value="@ViewBag.QuestionarioId" />
+                        <input type="hidden" name="UsuarioId" value="@ViewBag.UsuarioId" />
                         <div class="form-group">
                             <h6 class="col-md-6 mb-0">Título</h6>
                             <div class="col-md-12 mt-2">
-                                <input type="text" name="AreaNome" placeholder="Escreva aqui..."
-                                       class="form-control pl-0 form-control-line">
+                                <input type="text" name="Titulo" value="@Model.Titulo" placeholder="Escreva aqui..."
+                                       class="form-control border border-primary pl-0 form-control-line">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <h6 class="col-md-6 mb-0 mt-3">Área</h6>
                             <div class="col-md-12 mt-2">
-                                <select name="AreaCandidaturaId" class="form-control pl-0 form-control-line">
-                                    @foreach (var areaCandidatura in ViewBag.AreaCandidaturas)
-                                    {
-                                        <option value="@areaCandidatura.Id">@areaCandidatura.AreaNome</option>
-
-                                    }
-                                </select>
+                                @Html.DropDownList("AreaCandidaturaId", new SelectList(ViewBag.AreaCandidaturas, "Id", "AreaNome"), new { @class = "form-control border border-primary pl-0 form-control-line" })
                             </div>
                         </div>
                         <h6 class="col-md-12 mb-0">Perguntas Total - @ViewBag.TotalPerguntas</h6>
                         <hr />
                         <div class="form-group">
                             <div class="col-md-12 p-2" id="AreaPergunta">
-                               
+                                @foreach (var item in Model.Perguntas)
+                                {
+                                    <div class="form-group col">
+                                        <label class="col-form-label mr-2">1 - @item.Descricao</label>
+                                        <label class="col-form-label font-weight-bold">Respostas - @item.TotalRespostas()</label>
+                                        <button class="btn btn-sm btn-danger rounded" style="margin-left:200px;">&times;</button>
+
+                                    </div>
+                                }
                             </div>
                         </div>
 
@@ -57,7 +60,7 @@
                         <div class="form-group">
                             <div class="col-sm-12 d-flex">
                                 <button class="btn btn-success mx-auto mx-md-0 text-white">
-                                    Criar questionário
+                                    Guardar Questionário
                                 </button>
                             </div>
                         </div>
@@ -76,7 +79,7 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header bg-cyan">
+            <div class="modal-header bg-info">
                 <h5 class="modal-title text-white" id="exampleModalLabel">Nova Pergunta</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -85,19 +88,44 @@
             <div class="modal-body">
                 <div class="row">
                     <form class="col-md-12">
-                        <div class="form-group">
-                            <label><b>Pergunta</b></label>
-                            <textarea class="form-control" id="pergunta"></textarea>
+                        <div class="form-row">
+                            <div class="form-group col-md-10">
+                                <label><b>Pergunta</b></label>
+                                <textarea class="form-control border border-primary" id="pergunta" required></textarea>
+                            </div>
+                            <div class="form-group col">
+                                <label><b>Pontos</b></label>
+                                <input type="number" min="1" max="20" class="form-control border border-primary" id="pontos" required>
+                            </div>
                         </div>
                         <hr />
                         <div class="row" id="AreaResposta">
                             <div class="col-md-12">
                                 <h6>Respostas</h6>
                             </div>
+                            @foreach (var item in Model.Perguntas)
+                            {
+                                <div class='form-row col-md-12' id='grupoResposta0'>
+                                    <div class='input-group col mb-3'>
+                                        <input type='text' class='form-control border border-primary'>
+                                        <div class='input-group-prepend'>
+                                            <div class='input-group-text border border-info badge-info'>
+                                                <input id='resposta0' type='radio' name='respostaSelect'>
+                                                <label for='resposta0' class='form-check-label ml-1'>Resposta Correta</label>
+                                            </div>
+                                            <button onclick='removerResposta(0);' type='button' class='btn btn-danger rounded-right'>&times;</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
 
                         </div>
 
-                        <div class="col-md-4"><a href="#" onclick="addResposta();" id="btnNovaResposta" class="btn btn-success text-white">Adicionar resposta <span class="fas fa-plus"></span></a></div>
+                        <div class="form-group">
+                            <button type="button" onclick="addResposta();" id="btnNovaResposta" class="btn btn-success text-white">
+                                Adicionar resposta <span class="fas fa-plus"></span>
+                            </button>
+                        </div>
 
                     </form>
 

@@ -23,6 +23,15 @@ namespace ProjectoAlexa
 
                 cfg.CreateMap<UsuarioAtualViewModel, Usuario>()
                .ReverseMap();
+
+                cfg.CreateMap<QuestionarioViewModel, Questionario>()
+              .ReverseMap();
+
+                cfg.CreateMap<PerguntaViewModel, Pergunta>()
+              .ReverseMap();
+
+                cfg.CreateMap<RespostaViewModel, Resposta>()
+              .ReverseMap();
             });
 
 

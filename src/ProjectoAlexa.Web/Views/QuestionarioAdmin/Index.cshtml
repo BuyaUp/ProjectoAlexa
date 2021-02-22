@@ -12,7 +12,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Lista de Questionários</h4>
-                <h6 class="card-subtitle"><hr /></h6>
+                <h6 class="card-subtitle"></h6>
                 <div class="table-responsive">
                     <table class="table user-table">
                         <thead>
@@ -21,34 +21,23 @@
                                 <th class="border-top-0">Título</th>
                                 <th class="border-top-0">Usuario</th>
                                 <th class="border-top-0">Area</th>
+                                <th class="border-top-0">Total de Perguntas</th>
                                 <th class="border-top-0">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @{ int conta = 1;}
                             @foreach (var questionario in Model)
                             {
                                 <tr>
-                                    <td>@questionario.Id</td>
+                                    <td>@(conta++)</td>
                                     <td>@questionario.Titulo</td>
                                     <td>@questionario.UsuarioId</td>
                                     <td>@questionario.AreaCandidatura.AreaNome</td>
+                                    <td>@questionario.TotalPerguntas()</td>
                                     <td>
                                         <a href="@Url.Action("Detalhes","QuestionarioAdmin")" class="btn btn-success text-white"><span class="mdi mdi-information"></span> Detalhes</a>
-                                        <a href="@Url.Action("Editar","QuestionarioAdmin")" class="btn btn-info"><span class="fas fa-edit"></span> Editar</a>
-                                        <a href="#" class="btn btn-danger"><span class="fas fa-trash-alt"></span> Eliminar</a>
-                                    </td>
-                                </tr>
-                            }
-
-                            @foreach (var resposta in ViewBag.Respostas)
-                            {
-                                <tr>
-                                    <td>@resposta.PerguntaId</td>
-                                    <td>@resposta.Descricao</td>
-                                    <td>@resposta.RespostaCerta</td>
-                                    <td>
-                                        <a href="@Url.Action("Detalhes","QuestionarioAdmin")" class="btn btn-success text-white"><span class="mdi mdi-information"></span> Detalhes</a>
-                                        <a href="@Url.Action("Editar","QuestionarioAdmin")" class="btn btn-info"><span class="fas fa-edit"></span> Editar</a>
+                                        <a href="@Url.Action("Create","QuestionarioAdmin", new { id = questionario.Id })" class="btn btn-info"><span class="fas fa-edit"></span> Editar</a>
                                         <a href="#" class="btn btn-danger"><span class="fas fa-trash-alt"></span> Eliminar</a>
                                     </td>
                                 </tr>

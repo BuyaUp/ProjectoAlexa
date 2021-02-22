@@ -17,12 +17,13 @@ namespace ProjectoAlexa.Data.Repositorios.Questionarios
 
             using (var db = new ProjectoBaseDataContext())
             {
-                ret = db.Questionarios.Find(id);
+                ret = db.Questionarios.Include(p => p.Perguntas.Select(r => r.Respostas))
+                     .Where(q => q.Id == id)
+                     .FirstOrDefault();
             }
 
             return ret;
         }
-
 
         public static List<Questionario> BuscarTodos()
         {
@@ -30,12 +31,14 @@ namespace ProjectoAlexa.Data.Repositorios.Questionarios
 
             using (var db = new ProjectoBaseDataContext())
             {
-                ret = db.Questionarios.Include(a => a.AreaCandidatura).ToList();
+                ret = db.Questionarios
+                     .Include(a => a.AreaCandidatura)
+                     .Include(a => a.Perguntas.Select(r => r.Respostas))
+                     .ToList();
             }
 
             return ret;
         }
-
 
         public static int Salvar(Questionario questionario)
         {
@@ -61,5 +64,7 @@ namespace ProjectoAlexa.Data.Repositorios.Questionarios
             }
             return ret;
         }
+
+
     }
 }

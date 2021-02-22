@@ -10,6 +10,7 @@ namespace ProjectoAlexa.Web.ViewModels
     {
         public string Descricao { get; set; }
         public int QuestionarioId { get; set; }
+        public int Pontos { get; set; }
         public ICollection<RespostaViewModel> Respostas { get; set; }
     }
 }

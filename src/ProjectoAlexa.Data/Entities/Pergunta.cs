@@ -14,5 +14,13 @@ namespace ProjectoAlexa.Data.Entities
         public virtual Questionario Questionario { get; set; }
 
         public virtual ICollection<Resposta> Respostas { get; set; }
+
+        public int TotalRespostas()
+        {
+            if (Respostas == null)
+                return 0;
+
+            return Respostas.Count();
+        }
     }
 }

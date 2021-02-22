@@ -14,26 +14,58 @@ function addPergunta() {
         var linha = {
             perguntaId: $("#pergunta").val(),
 
-            resposta: $(this).find("input[type=text]").val(),
-            correta: verifica
+            descricao: $(this).find("input[type=text]").val(),
+            respostaCerta: verifica
             //correta: $(this).find("input[type=radio]:checked").val()
         }
 
         listaRespostas.push(linha);
     });
+
+    enviarDados(listaRespostas);
 }
+
+// Enviar para a base de dados
+function enviarDados(itens) {
+    var carrinho = JSON.stringify(itens);
+
+    var pergunta = {
+        questionarioId: $("#questionarioId").val(),
+        descricao: $("#pergunta").val(),
+        pontos: $("#questionarioId").val()
+    }
+
+    $.post("/QuestionarioAdmin/AddPergunta/", { 'pergunta': pergunta, 'respostas': listaRespostas }, function (estado) {
+        if (estado != null) {
+
+            //$("#totalPreco").html(estado[1] + " Kz");
+            //$("#totalItens").html("" + estado[2]);
+
+            //$('#btn-verProdutos').click();
+
+            //alertify.success('Actualizado!');
+
+        }
+    })
+}
+
 
 function addResposta() {
 
-    $("#AreaResposta").append("<div class='form-row col-md-12' id='grupoResposta" + idResposta.toString()
-        + "' > <div class='form-group col-md-8'>"
-        + "<input type='text' class='form-control'> </div>"
-        + "<div class='form-group col-md-4'>"
-        + "<input name='respostaSelect' id='resposta" + idResposta.toString() + "' type='radio' class='form-check-input' />"
-        + " <label for='resposta" + idResposta.toString() + "' class='form-check-label'>Resposta correta</label>"
-        + " <button onclick='removerResposta(" + idResposta + ");' type='button' class='btn btn-danger ml-3'>&times;</button> "
-        + "</div>"
-        + "</div>");
+    $("#AreaResposta").append(
+        "<div class='form-row col-md-12' id='grupoResposta" + idResposta +"' >"+
+           " <div class='input-group col mb-3'>"+
+              "  <input type='text' class='form-control border border-primary'>"+
+                  " <div class='input-group-prepend'>"+
+                       " <div class='input-group-text border border-info badge-info'>"+
+                            " <input id='resposta" + idResposta +"' type='radio' name='respostaSelect'>"+
+                            "<label for='resposta" + idResposta +"' class='form-check-label ml-1'>Resposta Correta</label>"+
+                         " </div>"+
+                        " <button onclick='removerResposta(" + idResposta + ");' type='button' class='btn btn-danger rounded-right'>&times;</button>"+
+                  "</div>"+
+           " </div>"+
+        "</div>"
+    );
 
     idResposta++;
 

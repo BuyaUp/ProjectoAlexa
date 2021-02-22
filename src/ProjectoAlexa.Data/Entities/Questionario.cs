@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectoAlexa.Data.Entities
 {
-    public class Questionario:Entity<int>
+    public class Questionario : Entity<int>
     {
         public string Titulo { get; set; }
         public string UsuarioId { get; set; }
@@ -14,5 +14,13 @@ namespace ProjectoAlexa.Data.Entities
         public virtual Usuario Usuario { get; set; }
         public virtual AreaCandidatura AreaCandidatura { get; set; }
         public virtual ICollection<Pergunta> Perguntas { get; set; }
+
+        public int TotalPerguntas()
+        {
+            if (Perguntas == null)
+                return 0;
+
+            return Perguntas.Count();
+        }
     }
 }
