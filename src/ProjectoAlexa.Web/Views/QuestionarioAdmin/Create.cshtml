@@ -30,28 +30,29 @@
                                 @Html.DropDownList("AreaCandidaturaId", new SelectList(ViewBag.AreaCandidaturas, "Id", "AreaNome"), new { @class = "form-control border border-primary pl-0 form-control-line" })
                             </div>
                         </div>
-                        <h6 class="col-md-12 mb-0">Perguntas Total - @ViewBag.TotalPerguntas</h6>
+                        <h6 class="col-md-12 mb-0" id="totalPerguntas" data-conta="@ViewBag.TotalPerguntas">Perguntas Total - @ViewBag.TotalPerguntas</h6>
                         <hr />
                         <div class="form-group">
-                            <div class="col-md-12 p-2" id="AreaPergunta">
+                            <div class="col-md-12 p-2 border @(Model.Perguntas.Count > 0 ? "border-primary" : "")" id="AreaPergunta">
+                                @{int conta = 1; }
                                 @foreach (var item in Model.Perguntas)
                                 {
-                                    <div class="form-group col">
-                                        <label class="col-form-label mr-2">1 - @item.Descricao</label>
+                                    <div class="form-group col" id='grupoPergunta_@item.Id'>
+                                        <label class="col-form-label mr-2">@(conta++) - @item.Descricao</label>
+                                        <label class="col-form-label font-weight-bold mr-2">Pontos - @item.Pontos</label>
                                         <label class="col-form-label font-weight-bold">Respostas - @item.TotalRespostas()</label>
-                                        <button class="btn btn-sm btn-danger rounded" style="margin-left:200px;">&times;</button>
-
+                                        <button type='button' onclick='atualizarPergunta(@item.Id);' class='btn btn-sm btn-success text-white rounded ml-1 mr-1'><i class='fa fa-edit'></i> </button>
+                                        <button type='button' onclick="$('#eliminarId').attr('data-eliminarId', @item.Id);" data-toggle='modal' data-target='#eliminarDadosModal' class='btn btn-sm btn-danger rounded'><i class='fa fa-trash-alt'></i></button>
                                     </div>
                                 }
                             </div>
                         </div>
 
-
                         <div class="form-group">
                             <div class="col-md-12 mb-0">
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-                                    <span class="mdi mdi-plus"></span>
+                                <button id="btnPerguntaAdd" onclick="novaPergunta();" type="button" class="btn btn-primary font-bold">
+                                    Pergunta <span class="mdi mdi-plus"></span>
                                 </button>
                             </div>
                         </div>
@@ -75,49 +76,39 @@
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal Pergunta-->
+<div class="modal fade" id="addEditPerguntaModal" tabindex="-1" aria-labelledby="addEditPerguntaModal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-info">
-                <h5 class="modal-title text-white" id="exampleModalLabel">Nova Pergunta</h5>
+                <h5 class="modal-title text-white" id="addEditPerguntaModalTitle">Nova Pergunta</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <form class="col-md-12">
+                    <form id="frmPerguntaAdd" class="col-md-12">
                         <div class="form-row">
                             <div class="form-group col-md-10">
+                                <input type="hidden" name="perguntaId" id="perguntaId" />
+
                                 <label><b>Pergunta</b></label>
-                                <textarea class="form-control border border-primary" id="pergunta" required></textarea>
+                                <textarea name="perguntaDesc" id="perguntaDesc" class="form-control border border-primary" required></textarea>
                             </div>
                             <div class="form-group col">
                                 <label><b>Pontos</b></label>
-                                <input type="number" min="1" max="20" class="form-control border border-primary" id="pontos" required>
+                                <input name="pontos" id="pontos" type="number" min="1" max="20" class="form-control border border-primary" required>
                             </div>
                         </div>
                         <hr />
-                        <div class="row" id="AreaResposta">
+                        <div class="row respostas" id="AreaResposta">
                             <div class="col-md-12">
                                 <h6>Respostas</h6>
                             </div>
-                            @foreach (var item in Model.Perguntas)
-                            {
-                                <div class='form-row col-md-12' id='grupoResposta0'>
-                                    <div class='input-group col mb-3'>
-                                        <input type='text' class='form-control border border-primary'>
-                                        <div class='input-group-prepend'>
-                                            <div class='input-group-text border border-info badge-info'>
-                                                <input id='resposta0' type='radio' name='respostaSelect'>
-                                                <label for='resposta0' class='form-check-label ml-1'>Resposta Correta</label>
-                                            </div>
-                                            <button onclick='removerResposta(0);' type='button' class='btn btn-danger rounded-right'>&times;</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
+                            <input type="hidden" name="contaRespostas" id="contaRespostas" value="2" max="5" min="2" />
+
+                            @*// Respostas serão adicionadas aqui *@
 
                         </div>
 
@@ -127,25 +118,41 @@
                             </button>
                         </div>
 
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            @*<button type="submit" onclick="addPergunta()" class="btn btn-primary">Adicionar</button>*@
+                            <input type="submit" name="enviar" id="enviar" class="btn btn-primary" value="Adicionar" />
+                        </div>
                     </form>
-
-
                 </div>
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button onclick="addPergunta()" type="button" class="btn btn-primary">Adicionar</button>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Modal Delete Confirm -->
+<div class="modal fade" id="eliminarDadosModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">MINEA - Sistema</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja eliminar esta pergunta?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                <button type="button" data-dismiss="modal" onclick="eliminarPergunta($(this).attr('data-eliminarId'))" data-eliminarId="" id="eliminarId" class="btn btn-primary">Sim</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section scripts{
-    <script src="~/Scripts/ScriptsDoProjecto/classes/Pergunta.js"></script>
-    <script src="~/Scripts/ScriptsDoProjecto/classes/Resposta.js"></script>
     <script src="~/Scripts/ScriptsDoProjecto/questionario-add.js"></script>
 
 }

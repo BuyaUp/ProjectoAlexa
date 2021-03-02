@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace ProjectoAlexa.Web.Controllers.Admin
 {
@@ -22,9 +23,6 @@ namespace ProjectoAlexa.Web.Controllers.Admin
         // GET: QuestionarioAdmin
         public ActionResult Index()
         {
-            ListaRespostas.Add(new RespostaViewModel { Descricao = "Teste 1", PerguntaId = 1, RespostaCerta = true });
-            ViewBag.Respostas = ListaRespostas;
-
             var questionarios = QuestionarioRepositorio.BuscarTodos();
 
             return View(questionarios);
@@ -38,20 +36,19 @@ namespace ProjectoAlexa.Web.Controllers.Admin
 
             if (id == null || id == 0)
             {
-                var ultimo = QuestionarioRepositorio.BuscarTodos()
-                            .OrderByDescending(q => q.Id)
-                            .FirstOrDefault().Id;
+                var contaQuest = QuestionarioRepositorio.BuscarTodos().Count;
 
                 questionaTemp = new Questionario
                 {
                     AreaCandidaturaId = areas[0].Id,
-                    Titulo = string.Format("Questionário {0}", ultimo),
+                    Titulo = string.Format("Questionário {0}", contaQuest++),
                     UsuarioId = UsuarioRepositorio.BuscarPeloEmail(User.Identity.Name).Id,
                     DataCadastro = DateTime.Now,
                     Ativo = true
                 };
 
-                QuestionarioRepositorio.Salvar(questionaTemp);
+                var questId = QuestionarioRepositorio.Salvar(questionaTemp);
+                questionaTemp = QuestionarioRepositorio.BuscarPeloId(questId);
             }
             else
                 questionaTemp = QuestionarioRepositorio.BuscarPeloId(id);
@@ -81,39 +78,63 @@ namespace ProjectoAlexa.Web.Controllers.Admin
             return View(questionario);
         }
 
-        public ActionResult Editar(int id)
-        {
-            var quest = QuestionarioRepositorio.BuscarPeloId(id);
-
-            if (quest != null)
-                return View(quest);
-
-            return RedirectToAction("Index");
-        }
-
-        public ActionResult AddPergunta(PerguntaViewModel pergunta, List<RespostaViewModel> respostas)
+        public JsonResult AddPergunta(PerguntaViewModel pergunta, List<RespostaViewModel> respostas)
         {
             pergunta.Respostas = respostas;
 
-            var perguntaSendDB = Mapper.Map<Pergunta>(pergunta);
+            var perguntaId = PerguntaRepositorio.Salvar(Mapper.Map<Pergunta>(pergunta));
 
-            PerguntaRepositorio.Salvar(perguntaSendDB);
+            var questionario = QuestionarioRepositorio.BuscarPeloId(pergunta.QuestionarioId);
+            var totalPerguntas = questionario.TotalPerguntas();
+            var listaPerguntas = questionario.Perguntas
+                                .Select(p => new PerguntaViewModel
+                                {
+                                    QuestionarioId = p.QuestionarioId,
+                                    PerguntaId = p.Id,
+                                    Descricao = p.Descricao,
+                                    Pontos = p.Pontos,
+                                    TotalRespostas = p.TotalRespostas(),
+                                    Respostas = null
+                                }).ToList();
 
-            return Json(pergunta, JsonRequestBehavior.AllowGet);
+            return Json(new { perguntaId, totalPerguntas, perguntas = listaPerguntas }, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult AddResposta(RespostaViewModel resposta)
+        [HttpGet]
+        public JsonResult BuscaPerguntaPorId(int id)
         {
-            resposta.RespostaCerta = true;
-            resposta.PerguntaId = 1;
-            ListaRespostas.Add(resposta);
-            return Json(resposta.Descricao, JsonRequestBehavior.AllowGet);
+            var pergunta = PerguntaRepositorio.BuscarPeloId(id);
+
+            string value = JsonConvert.SerializeObject(pergunta, Formatting.Indented, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+
+            if (pergunta != null)
+            {
+                var totalRespost = pergunta.TotalRespostas();
+                var respost = pergunta.Respostas.ToList();
+                respost.ForEach(p => p.Pergunta = null);
+
+                return Json(new { pergunta = value, respostas = respost, totalRespostas = totalRespost }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { sucesso = false });
         }
 
-        public JsonResult GetRespostas()
+        [HttpPost]
+        public JsonResult EliminarPergunta(int id)
         {
+            var pergunta = PerguntaRepositorio.BuscarPeloId(id);
 
-            return Json(ListaRespostas, JsonRequestBehavior.AllowGet);
+            if (pergunta != null)
+            {
+                bool ret = PerguntaRepositorio.Eliminar(pergunta);
+
+                return Json(new { sucesso = ret });
+            }
+
+            return Json(new { sucesso = false });
         }
+
     }
 }

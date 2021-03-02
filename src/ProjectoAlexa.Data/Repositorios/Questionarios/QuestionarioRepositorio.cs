@@ -19,6 +19,7 @@ namespace ProjectoAlexa.Data.Repositorios.Questionarios
             {
                 ret = db.Questionarios.Include(p => p.Perguntas.Select(r => r.Respostas))
                      .Where(q => q.Id == id)
+                     .AsNoTracking()
                      .FirstOrDefault();
             }
 
@@ -34,6 +35,7 @@ namespace ProjectoAlexa.Data.Repositorios.Questionarios
                 ret = db.Questionarios
                      .Include(a => a.AreaCandidatura)
                      .Include(a => a.Perguntas.Select(r => r.Respostas))
+                     .AsNoTracking()
                      .ToList();
             }
 

@@ -16,22 +16,23 @@ namespace ProjectoAlexa
                 .ReverseMap();
 
                 cfg.CreateMap<AreaCandidaturaViewModel, AreaCandidatura>()
-               .ReverseMap();
+                .ReverseMap();
 
                 cfg.CreateMap<CandidaturaViewModel, Candidatura>()
-              .ReverseMap();
+                .ReverseMap();
 
                 cfg.CreateMap<UsuarioAtualViewModel, Usuario>()
-               .ReverseMap();
+                .ReverseMap();
 
                 cfg.CreateMap<QuestionarioViewModel, Questionario>()
-              .ReverseMap();
+                .ReverseMap();
 
                 cfg.CreateMap<PerguntaViewModel, Pergunta>()
-              .ReverseMap();
+                .ForMember(to => to.Id, src => src.MapFrom(x => x.PerguntaId))
+                .ReverseMap();
 
                 cfg.CreateMap<RespostaViewModel, Resposta>()
-              .ReverseMap();
+                .ReverseMap();
             });
 
 

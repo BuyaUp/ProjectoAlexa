@@ -14,16 +14,24 @@
     <title>MINEA - @ViewBag.Title</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/materialpro-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="~/Templates/material-pro-lite-master/image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <link rel="icon" type="~/Templates/material-pro-lite-master/image/png" sizes="16x16" href="~/Templates/material-pro-lite-master/assets/images/favicon.png">
     <!-- chartist CSS -->
-    <link href="~/Templates/material-pro-lite-master/assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
-    <link href="~/Templates/material-pro-lite-master/assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
-    <link href="~/Templates/material-pro-lite-master/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    @*<link href="~/Templates/material-pro-lite-master/assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
+        <link href="~/Templates/material-pro-lite-master/assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
+        <link href="~/Templates/material-pro-lite-master/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">*@
+
     <!--This page css - Morris CSS -->
     <link href="~/Templates/material-pro-lite-master/assets/plugins/c3-master/c3.min.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="~/Templates/material-pro-lite-master/html/css/style.min.css" rel="stylesheet">
     <link href="~/Content/fontawesome-all.min.css" rel="stylesheet" />
+
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 
 
@@ -252,25 +260,34 @@
 
 
     <script src="~/Templates/material-pro-lite-master/assets/plugins/jquery/dist/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/additional-methods.min.js"></script>
+    <script src="~/Scripts/localization/messages_pt_PT.min.js"></script>
+
     <!-- Bootstrap tether Core JavaScript -->
     <script src="~/Templates/material-pro-lite-master/assets/plugins/popper.js/dist/umd/popper.min.js"></script>
     <script src="~/Templates/material-pro-lite-master/assets/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/Templates/material-pro-lite-master/html/js/app-style-switcher.js"></script>
+
     <!--Wave Effects -->
     <script src="~/Templates/material-pro-lite-master/html/js/waves.js"></script>
+
     <!--Menu sidebar -->
     <script src="~/Templates/material-pro-lite-master/html/js/sidebarmenu.js"></script>
+
     <!-- ============================================================== -->
     <!-- This page plugins -->
     <!-- ============================================================== -->
     <!-- chartist chart -->
-    <script src="~/Templates/material-pro-lite-master/assets/plugins/chartist-js/dist/chartist.min.js"></script>
-    <script src="~/Templates/material-pro-lite-master/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+    @*<script src="~/Templates/material-pro-lite-master/assets/plugins/chartist-js/dist/chartist.min.js"></script>
+        <script src="~/Templates/material-pro-lite-master/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>*@
+
     <!--c3 JavaScript -->
     <script src="~/Templates/material-pro-lite-master/assets/plugins/d3/d3.min.js"></script>
     <script src="~/Templates/material-pro-lite-master/assets/plugins/c3-master/c3.min.js"></script>
+
     <!--Custom JavaScript -->
-    <script src="~/Templates/material-pro-lite-master/html/js/pages/dashboards/dashboard1.js"></script>
+    @*<script src="~/Templates/material-pro-lite-master/html/js/pages/dashboards/dashboard1.js"></script>*@
     <script src="~/Templates/material-pro-lite-master/html/js/custom.js"></script>
     @RenderSection("scripts", required: false)
 </body>
