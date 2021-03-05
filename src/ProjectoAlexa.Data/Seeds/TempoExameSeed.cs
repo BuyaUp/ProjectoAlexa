@@ -14,10 +14,10 @@ namespace ProjectoAlexa.Data.Seeds
         public static void Seed(ProjectoBaseDataContext context)
         {
             context.TempoExames.AddOrUpdate(x => x.Descricao,
-                new TempoExame() { Descricao = "30min", Ativo = true },
-                new TempoExame() { Descricao = "1h", Ativo = true },
-                new TempoExame() { Descricao = "1h30min", Ativo = true });
-
+                new TempoExame() { Descricao = "30min", ValorMinuto = 30, Ativo = true },
+                new TempoExame() { Descricao = "1h", ValorMinuto = 60, Ativo = true },
+                new TempoExame() { Descricao = "1h30min", ValorMinuto = 90, Ativo = true },
+                new TempoExame() { Descricao = "2h", ValorMinuto = 90, Ativo = true });
 
             context.SaveChanges();
         }

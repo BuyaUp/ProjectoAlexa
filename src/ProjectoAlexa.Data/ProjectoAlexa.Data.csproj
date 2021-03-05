@@ -80,10 +80,6 @@
     <Compile Include="Maps\TempoExameMap.cs" />
     <Compile Include="Maps\UsuarioMap.cs" />
     <Compile Include="Maps\UsuarioPerfilMap.cs" />
-    <Compile Include="Migrations\202103051528480_AddConcursoProvaTempoExame.cs" />
-    <Compile Include="Migrations\202103051528480_AddConcursoProvaTempoExame.designer.cs">
-      <DependentUpon>202103051528480_AddConcursoProvaTempoExame.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\AreaCandidaturaRepositorio.cs" />
@@ -103,11 +99,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202103051528480_AddConcursoProvaTempoExame.resx">
-      <DependentUpon>202103051528480_AddConcursoProvaTempoExame.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

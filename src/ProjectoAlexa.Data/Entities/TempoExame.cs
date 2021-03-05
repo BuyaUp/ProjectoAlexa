@@ -14,7 +14,7 @@ namespace ProjectoAlexa.Data.Entities
         }
 
         public string Descricao { get; set; }
-        public DateTime Valor { get; set; }
+        public int ValorMinuto { get; set; }
 
         public virtual ICollection<Questionario> Questionarios { get; set; }
     }

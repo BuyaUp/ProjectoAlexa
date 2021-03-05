@@ -22,6 +22,7 @@
             UsuarioSeed.Seed(context);
             ProvinciaSeed.Seed(context);
             AreaSeed.Seed(context);
+            TempoExameSeed.Seed(context);
         }
     }
 }
