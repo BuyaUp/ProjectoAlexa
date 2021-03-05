@@ -96,6 +96,7 @@
     <Compile Include="Repositorios\UsuarioRepositorio.cs" />
     <Compile Include="Seeds\AreaSeed.cs" />
     <Compile Include="Seeds\ProvinciaSeed.cs" />
+    <Compile Include="Seeds\TempoExameSeed.cs" />
     <Compile Include="Seeds\UsuarioPerfilSeed.cs" />
     <Compile Include="Seeds\UsuarioSeed.cs" />
   </ItemGroup>
