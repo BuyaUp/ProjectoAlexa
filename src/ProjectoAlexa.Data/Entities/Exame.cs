@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectoAlexa.Data.Entities
 {
-    public class Exame:Entity<string>
+    public class Exame : Entity<string>
     {
         public Exame()
         {
@@ -15,7 +15,6 @@ namespace ProjectoAlexa.Data.Entities
 
         public string CandidaturaId { get; set; }
         public int QuestionarioId { get; set; }
-        public DateTime DataCadastro { get; set; }
 
         public virtual Candidatura Candidatura { get; set; }
         public virtual Questionario Questionario { get; set; }

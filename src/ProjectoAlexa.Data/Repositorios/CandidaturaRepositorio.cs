@@ -31,7 +31,11 @@ namespace ProjectoAlexa.Data.Repositorios
                 //ret = db.Database.Connection.Query<Candidatura>(sql).ToList();
                 //ret = db.Candidaturas.SqlQuery(sql).ToList();
 
-                ret = db.Candidaturas.ToList();
+                ret = db.Candidaturas
+                        .Include(u => u.Usuario)
+                        .Include(u => u.Provincia)
+                        .Include(u => u.AreaCandidatura)
+                        .ToList();
             }
 
             return ret;

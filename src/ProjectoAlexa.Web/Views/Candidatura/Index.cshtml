@@ -15,21 +15,24 @@
                     <table class="table user-table">
                         <thead>
                             <tr>
-                                <th class="border-top-0">#ID</th>
+                                <th class="border-top-0">#</th>
                                 <th class="border-top-0">Nome Completo</th>
-                        
-                                <th class="border-top-0">Ações</th>
+                                <th class="border-top-0">Província</th>
+                                <th class="border-top-0">Área</th>
+                                <th class="border-top-0">Data Registo</th>
+
                             </tr>
                         </thead>
                         <tbody>
+                            @{int conta = 1;}
                             @foreach (var candidatura in Model)
                             {
                                 <tr>
-                                    <td>@candidatura.Id</td>
-
-                                    <td>
-                                        <a href="@Url.Action("Create", new { id = candidatura.Id })" class="btn btn-info"><span class="fas fa-edit"></span> Editar</a>
-                                    </td>
+                                    <td>@(conta++)</td>
+                                    <td>@candidatura.Usuario.NomeCompleto</td>
+                                    <td>@candidatura.Provincia.ProvinciaNome</td>
+                                    <td>@candidatura.AreaCandidatura.AreaNome</td>
+                                    <td>@candidatura.DataCadastro</td>
                                 </tr>
                             }
 
