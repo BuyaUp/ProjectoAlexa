@@ -6,8 +6,19 @@ using System.Threading.Tasks;
 
 namespace ProjectoAlexa.Data.Entities
 {
-    public class Exame
+    public class Exame:Entity<string>
     {
-        
+        public Exame()
+        {
+            Id = Guid.NewGuid().ToString();
+        }
+
+        public string CandidaturaId { get; set; }
+        public int QuestionarioId { get; set; }
+        public DateTime DataCadastro { get; set; }
+
+        public virtual Candidatura Candidatura { get; set; }
+        public virtual Questionario Questionario { get; set; }
+
     }
 }

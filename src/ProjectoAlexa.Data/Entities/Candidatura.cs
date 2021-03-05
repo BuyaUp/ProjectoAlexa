@@ -24,5 +24,6 @@ namespace ProjectoAlexa.Data.Entities
         public virtual AreaCandidatura AreaCandidatura { get; set; }
         public virtual Usuario Usuario { get; set; }
         public virtual Provincia Provincia { get; set; }
+        public virtual ICollection<Exame> Exames { get; set; }
     }
 }

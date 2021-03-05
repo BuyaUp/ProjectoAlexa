@@ -22,8 +22,8 @@ namespace ProjectoAlexa.Web.Controllers
 
         public ActionResult Index()
         {
-
-            return View();
+            var candidaturas = CandidaturaRepositorio.RecuperarLista();
+            return View(candidaturas);
         }
 
         public ActionResult Adicionar()

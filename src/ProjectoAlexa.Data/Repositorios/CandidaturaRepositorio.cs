@@ -17,19 +17,21 @@ namespace ProjectoAlexa.Data.Repositorios
 
             using (var db = new ProjectoBaseDataContext())
             {
-                var filtroWhere = "";
-                if (!string.IsNullOrEmpty(filtro))
-                {
-                    filtroWhere = string.Format("where (lower(DocumentosId) like '%{0}%') ", filtro.ToLower());
-                }
+                //var filtroWhere = "";
+                //if (!string.IsNullOrEmpty(filtro))
+                //{
+                //    filtroWhere = string.Format("where (lower(DocumentosId) like '%{0}%') ", filtro.ToLower());
+                //}
 
-                var sql =
-                    "select * from Candidatura " +
-                    filtroWhere +
-                    "order by " + (!string.IsNullOrEmpty(ordem) ? ordem : "DocumentosId");
+                //var sql =
+                //    "select * from Candidatura " +
+                //    filtroWhere +
+                //    "order by " + (!string.IsNullOrEmpty(ordem) ? ordem : "DocumentosId");
 
                 //ret = db.Database.Connection.Query<Candidatura>(sql).ToList();
-                ret = db.Candidaturas.SqlQuery(sql).ToList();
+                //ret = db.Candidaturas.SqlQuery(sql).ToList();
+
+                ret = db.Candidaturas.ToList();
             }
 
             return ret;
