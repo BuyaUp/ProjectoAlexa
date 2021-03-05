@@ -11,9 +11,7 @@ namespace ProjectoAlexa.Data.Repositorios
 {
     public class CandidaturaRepositorio
     {
-
-      
-        public static List<Candidatura> RecuperarLista()
+        public static List<Candidatura> RecuperarLista(string filtro = "", string ordem = "")
         {
             var ret = new List<Candidatura>();
 
@@ -33,12 +31,11 @@ namespace ProjectoAlexa.Data.Repositorios
                 //ret = db.Database.Connection.Query<Candidatura>(sql).ToList();
                 //ret = db.Candidaturas.SqlQuery(sql).ToList();
 
-                ret = db.Candidaturas.ToList();
-                ret = db.Candidaturas.
-                    Include(u => u.Usuario).
-                    Include(c => c.Provincia).
-                    Include(d => d.AreaCandidatura).
-                    ToList();
+                ret = db.Candidaturas
+                        .Include(u => u.Usuario)
+                        .Include(u => u.Provincia)
+                        .Include(u => u.AreaCandidatura)
+                        .ToList();
             }
 
             return ret;
