@@ -57,23 +57,33 @@
     <Compile Include="Entities\Candidatura.cs" />
     <Compile Include="Entities\Concurso.cs" />
     <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\Enum\EnumTempoExame.cs" />
     <Compile Include="Entities\Exame.cs" />
     <Compile Include="Entities\Pergunta.cs" />
+    <Compile Include="Entities\Prova.cs" />
     <Compile Include="Entities\Provincia.cs" />
     <Compile Include="Entities\Questionario.cs" />
     <Compile Include="Entities\Resposta.cs" />
+    <Compile Include="Entities\TempoExame.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Entities\UsuarioPerfil.cs" />
     <Compile Include="Helpers\CriptoHelper.cs" />
     <Compile Include="Maps\AreaCandidaturaMap.cs" />
     <Compile Include="Maps\CandidaturaMap.cs" />
+    <Compile Include="Maps\ConcursoMap.cs" />
     <Compile Include="Maps\ExameMap.cs" />
     <Compile Include="Maps\PerguntaMap.cs" />
+    <Compile Include="Maps\ProvaMap.cs" />
     <Compile Include="Maps\ProvinciaMap.cs" />
     <Compile Include="Maps\QuestionarioMap.cs" />
     <Compile Include="Maps\RespostaMap.cs" />
+    <Compile Include="Maps\TempoExameMap.cs" />
     <Compile Include="Maps\UsuarioMap.cs" />
     <Compile Include="Maps\UsuarioPerfilMap.cs" />
+    <Compile Include="Migrations\202103051528480_AddConcursoProvaTempoExame.cs" />
+    <Compile Include="Migrations\202103051528480_AddConcursoProvaTempoExame.designer.cs">
+      <DependentUpon>202103051528480_AddConcursoProvaTempoExame.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\AreaCandidaturaRepositorio.cs" />
@@ -92,6 +102,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202103051528480_AddConcursoProvaTempoExame.resx">
+      <DependentUpon>202103051528480_AddConcursoProvaTempoExame.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

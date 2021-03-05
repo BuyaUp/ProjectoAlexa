@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectoAlexa.Data.Entities
 {
-    public class Concurso:Entity<string>
+    public class Concurso : Entity<string>
     {
         public Concurso()
         {
@@ -15,5 +15,9 @@ namespace ProjectoAlexa.Data.Entities
 
         public DateTime DataInicio { get; set; }
         public DateTime DataFim { get; set; }
+        public DateTime DataExames { get; set; }
+        public DateTime DataResultados { get; set; }
+
+        public virtual ICollection<Candidatura> Candidaturas { get; set; }
     }
 }

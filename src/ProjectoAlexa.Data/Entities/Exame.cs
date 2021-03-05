@@ -15,9 +15,11 @@ namespace ProjectoAlexa.Data.Entities
 
         public string CandidaturaId { get; set; }
         public int QuestionarioId { get; set; }
+        public int Resultado { get; set; }
+        public DateTime? TempoConclusao { get; set; }
 
         public virtual Candidatura Candidatura { get; set; }
         public virtual Questionario Questionario { get; set; }
-
+        public virtual ICollection<Prova> Provas { get; set; }
     }
 }
