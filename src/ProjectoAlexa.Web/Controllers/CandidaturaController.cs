@@ -3,9 +3,6 @@ using ProjectoAlexa.Data.Repositorios;
 using ProjectoAlexa.Web.Helpers;
 using ProjectoAlexa.Web.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -22,8 +19,8 @@ namespace ProjectoAlexa.Web.Controllers
 
         public ActionResult Index()
         {
-
-            return View();
+            var candidaturas = CandidaturaRepositorio.RecuperarLista();
+            return View(candidaturas);
         }
 
         public ActionResult Adicionar()

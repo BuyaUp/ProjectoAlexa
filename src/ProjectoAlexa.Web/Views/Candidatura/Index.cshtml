@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Candidaturas";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row mt-4">
+    <!-- column -->
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Lista de Candidaturas</h4>
+                <h6 class="card-subtitle"><hr /></h6>
+                <div class="table-responsive">
+                    <table class="table user-table">
+                        <thead>
+                            <tr>
+                                <th class="border-top-0">#ID</th>
+                                <th class="border-top-0">Nome Completo</th>
+                                <th class="border-top-0">Provincia</th>
+                                <th class="border-top-0">Area de Candidatura</th>
+                                <th class="border-top-0">Data de Cadastro</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{int conta = 1;}
+                            @foreach (var candidatura in Model)
+                            {
+                                <tr>
+                                    @*<td>@candidatura.Id</td>*@
+
+                                    @*<td>
+                                        <a href="@Url.Action("Create", new { id = candidatura.Id })" class="btn btn-info"><span class="fas fa-edit"></span> Editar</a>
+                                    </td>*@
+                                    <td>@(conta++)</td>
+                                    <td>@candidatura.Usuario.NomeCompleto</td>
+                                    <td>@candidatura.Provincia.ProvinciaNome</td>
+                                    <td>@candidatura.AreaCandidatura.AreaNome</td>
+                                    <td>@candidatura.DataCadastro</td>
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

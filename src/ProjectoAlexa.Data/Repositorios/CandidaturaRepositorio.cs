@@ -11,25 +11,34 @@ namespace ProjectoAlexa.Data.Repositorios
 {
     public class CandidaturaRepositorio
     {
-        public static List<Candidatura> RecuperarLista(string filtro = "", string ordem = "")
+
+      
+        public static List<Candidatura> RecuperarLista()
         {
             var ret = new List<Candidatura>();
 
             using (var db = new ProjectoBaseDataContext())
             {
-                var filtroWhere = "";
-                if (!string.IsNullOrEmpty(filtro))
-                {
-                    filtroWhere = string.Format("where (lower(DocumentosId) like '%{0}%') ", filtro.ToLower());
-                }
+                //var filtroWhere = "";
+                //if (!string.IsNullOrEmpty(filtro))
+                //{
+                //    filtroWhere = string.Format("where (lower(DocumentosId) like '%{0}%') ", filtro.ToLower());
+                //}
 
-                var sql =
-                    "select * from Candidatura " +
-                    filtroWhere +
-                    "order by " + (!string.IsNullOrEmpty(ordem) ? ordem : "DocumentosId");
+                //var sql =
+                //    "select * from Candidatura " +
+                //    filtroWhere +
+                //    "order by " + (!string.IsNullOrEmpty(ordem) ? ordem : "DocumentosId");
 
                 //ret = db.Database.Connection.Query<Candidatura>(sql).ToList();
-                ret = db.Candidaturas.SqlQuery(sql).ToList();
+                //ret = db.Candidaturas.SqlQuery(sql).ToList();
+
+                ret = db.Candidaturas.ToList();
+                ret = db.Candidaturas.
+                    Include(u => u.Usuario).
+                    Include(c => c.Provincia).
+                    Include(d => d.AreaCandidatura).
+                    ToList();
             }
 
             return ret;

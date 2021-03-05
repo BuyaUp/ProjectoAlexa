@@ -149,6 +149,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CandidaturaController.cs" />
     <Compile Include="Controllers\ContaController.cs" />
+    <Compile Include="Controllers\ExameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1424,6 +1425,8 @@
     <Content Include="Templates\material-pro-lite-master\html\scss\widgets\widgets.scss" />
     <Content Include="Views\Shared\_UsuarioAtual.cshtml" />
     <Content Include="Views\Candidatura\Adicionar.cshtml" />
+    <Content Include="Views\Exame\Index.cshtml" />
+    <Content Include="Views\Candidatura\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
