@@ -12,5 +12,7 @@ namespace ProjectoAlexa.Data.Entities
         public bool RespostaCerta { get; set; }
         public int  PerguntaId { get; set; }
         public virtual Pergunta Pergunta { get; set; }
+
+        public virtual ICollection<Prova> Provas { get; set; }
     }
 }
