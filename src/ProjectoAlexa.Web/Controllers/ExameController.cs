@@ -13,5 +13,10 @@ namespace ProjectoAlexa.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult FazerExame()
+        {
+            return View();
+        }
     }
 }
