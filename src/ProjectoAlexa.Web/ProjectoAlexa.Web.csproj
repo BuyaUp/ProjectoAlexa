@@ -1427,6 +1427,7 @@
     <Content Include="Views\Candidatura\Adicionar.cshtml" />
     <Content Include="Views\Exame\Index.cshtml" />
     <Content Include="Views\Candidatura\Index.cshtml" />
+    <Content Include="Views\Exame\FazerExame.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

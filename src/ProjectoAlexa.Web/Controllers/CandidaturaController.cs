@@ -3,9 +3,6 @@ using ProjectoAlexa.Data.Repositorios;
 using ProjectoAlexa.Web.Helpers;
 using ProjectoAlexa.Web.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
