@@ -62,9 +62,9 @@ $(document).ready(function () {
                 } else if (elemento.is("input[type=text]")) {
                     erro.appendTo(elemento.parents(".form-row"));
                 }
-                //else {
-                //    erro.insertAfter(elemento);
-                //}
+                else {
+                    erro.insertAfter(elemento);
+                }
             },
             submitHandler: function (form) {
                 addPergunta();

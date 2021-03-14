@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectoAlexa.Data.Entities.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,8 @@ namespace ProjectoAlexa.Data.Entities
         public int QuestionarioId { get; set; }
         public int Resultado { get; set; }
         public DateTime? TempoConclusao { get; set; }
+
+        public EnumEstadoExame EstadoExame { get; set; }
 
         public virtual Candidatura Candidatura { get; set; }
         public virtual Questionario Questionario { get; set; }
