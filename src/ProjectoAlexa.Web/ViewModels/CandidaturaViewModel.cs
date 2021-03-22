@@ -21,15 +21,21 @@ namespace ProjectoAlexa.Web.ViewModels
 
 
         [Display(Name = "Cópia de BI")]
+        [Required(ErrorMessage = "Falta o BI.")]
         public HttpPostedFileBase BIFile { get; set; }
 
         [Display(Name = "Certificado")]
+        [Required(ErrorMessage = "Falta o certificado.")]
         public HttpPostedFileBase CertificadoFile { get; set; }
 
         [Display(Name = "Carta p/ Ministro")]
+        [Required(ErrorMessage = "Falta a carta.")]
         public HttpPostedFileBase CartaFile { get; set; }
 
+        [Required(ErrorMessage = "Selecione a Província de candidatura.")]
         public string ProvinciaId { get; set; }
+
+        [Required(ErrorMessage = "O campo concurso é obrigatório.")]
         public string ConcursoId { get; set; }
     }
 }
