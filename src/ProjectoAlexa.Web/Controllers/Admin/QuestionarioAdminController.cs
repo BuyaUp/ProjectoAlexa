@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Linq;
 using Newtonsoft.Json;
+using ProjectoAlexa.Data.Repositorios.TempoExames;
 
 namespace ProjectoAlexa.Web.Controllers.Admin
 {
@@ -31,17 +32,18 @@ namespace ProjectoAlexa.Web.Controllers.Admin
         [HttpGet]
         public ActionResult Create(int? id)
         {
-            var questionaTemp = new Questionario();
             var areas = AreaCandidaturaRepositorio.BuscarTodas();
+            var tempoExames = TempoExameRepositorio.BuscarTodos();
+
+            Questionario questionaTemp;
 
             if (id == null || id == 0)
             {
-                var contaQuest = QuestionarioRepositorio.BuscarTodos().Count;
-
                 questionaTemp = new Questionario
                 {
+                    TempoExameId = tempoExames[0].Id,
                     AreaCandidaturaId = areas[0].Id,
-                    Titulo = string.Format("Questionário {0}", contaQuest++),
+                    Titulo = QuestionarioRepositorio.GerarNomeAutomatico(),
                     UsuarioId = UsuarioRepositorio.BuscarPeloEmail(User.Identity.Name).Id,
                     DataCadastro = DateTime.Now,
                     Ativo = true
@@ -56,6 +58,7 @@ namespace ProjectoAlexa.Web.Controllers.Admin
             ViewBag.QuestionarioId = questionaTemp.Id;
             ViewBag.UsuarioId = questionaTemp.UsuarioId;
             ViewBag.AreaCandidaturas = areas;
+            ViewBag.Tempo = tempoExames;
             ViewBag.TotalPerguntas = questionaTemp.TotalPerguntas();
             return View(questionaTemp);
         }

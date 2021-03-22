@@ -19,6 +19,7 @@ namespace ProjectoAlexa.Web.Controllers
 
             return PartialView("~/Views/Shared/_UsuarioAtual.cshtml", usuarioViewModel);
         }
+
         public ActionResult Perfil()
         {
             var user = UsuarioRepositorio.BuscarPeloEmail(User.Identity.Name);
@@ -28,10 +29,13 @@ namespace ProjectoAlexa.Web.Controllers
             var ultimaCandidatura = CandidaturaRepositorio.BuscarPeloUsuarioId(user.Id)
                 .OrderByDescending(c => c.DataCadastro).FirstOrDefault();
 
+            //var concursoAtual = ConcursoRepositorio.BuscarPeloId();
+
             if (ultimaCandidatura != null)
             {
-                usuarioViewModel.DataUltimaCandidatura = ultimaCandidatura.DataCadastro;
-                usuarioViewModel.ultimaCandidaturaId = ultimaCandidatura.Id;
+                usuarioViewModel.DataUltimaCandidatura = ultimaCandidatura.DataCadastro.Year;
+                usuarioViewModel.UltimaCandidaturaId = ultimaCandidatura.Id;
+                //usuarioViewModel.DataExame = ultimaCandidatura.
             }
 
 

@@ -1,12 +1,12 @@
->: CRUD Concurso
->: Questionário add na view Tempo de Conclusão(Tempo de exame)
->: Add ConcursoId atual na Candidatura
->: Verificar data de Exame no Concurso 
->: Add View Lista dos Exames
->: Informar data dos exames
->: Add EstadoExame > Aprovado/Reprovado
->: Fazer Exame > Provas
->: Informar Resultados
+>: CRUD Concurso <> Evander
+>: Questionário add na view Tempo de Conclusão(Tempo de exame) <> Mr. Estranho
+>: Add ConcursoId atual na Candidatura <> Evanilson
+>: Verificar data de Exame no Concurso <> Evanilson
+>: Add View Lista dos Exames <> Evander 
+>: Informar(Mostrar no Perfil do candidato) data dos exames <> Evanilson
+>: Add EstadoExame > Aprovado/Reprovado <> Mr. Estranho
+>: Fazer Exame > Provas <> Mr. Estranho, Evander, Evanilson
+>: Informar Resultados <> Mr. Estranho, Evander, Evanilson
 
 ----------<<<<< Métodos comuns >>>>>>>--------------
 >: Adicionar

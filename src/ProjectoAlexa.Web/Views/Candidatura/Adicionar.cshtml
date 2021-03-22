@@ -35,6 +35,8 @@
                             @using (Html.BeginForm("Adicionar", "Candidatura", FormMethod.Post, new { enctype = "multipart/form-data" }))
                             {
                                 @Html.AntiForgeryToken()
+                                @Html.HiddenFor(m => m.ConcursoId)
+
                                 <div class="form-horizontal">
                                     <div class="row">
                                         <div class="col-md-6">

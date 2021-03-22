@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<a href="@Url.Action("Create")" class="btn btn-info">Adicionar Nova</a>
+
+<div class="row mt-4">
+    <!-- column -->
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Lista de Concurso</h4>
+                <h6 class="card-subtitle"><hr /></h6>
+                <div class="table-responsive">
+                    <table class="table user-table">
+                        <thead>
+                            <tr>
+                                <th class="border-top-0">#</th>
+                                <th class="border-top-0">Data de Inicio</th>
+                                <th class="border-top-0">Data de encerramento</th>
+                                <th class="border-top-0">Data de Exame</th>
+                                <th class="border-top-0">Data dos Resultados</th>
+                                <th class="border-top-0">Data de cadastro</th>
+                                <th class="border-top-0">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{int conta = 1;}
+                            @foreach (var concurso in Model)
+                            {
+                                <tr>
+                                    <td>@(conta++)</td>
+                                    <td>@concurso.DataInicio</td>
+                                    <td>@concurso.DataFim</td>
+                                    <td>@concurso.DataExames</td>
+                                    <td>@concurso.DataResultados</td>
+                                    <td>@concurso.DataCadastro</td>
+                                    <td>
+                                        <a href="@Url.Action("Create", new { id = concurso.Id })" class="btn btn-info"><span class="fas fa-edit"></span> Editar</a>
+                                        <a href="#" class="btn btn-danger"><span class="fas fa-trash-alt"></span> Eliminar</a>
+                                    </td>
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
