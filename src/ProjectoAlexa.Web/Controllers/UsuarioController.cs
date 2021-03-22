@@ -33,7 +33,7 @@ namespace ProjectoAlexa.Web.Controllers
 
             if (ultimaCandidatura != null)
             {
-                usuarioViewModel.DataUltimaCandidatura = ultimaCandidatura.DataCadastro.Year;
+                usuarioViewModel.DataUltimaCandidatura = ultimaCandidatura.DataCadastro;
                 usuarioViewModel.UltimaCandidaturaId = ultimaCandidatura.Id;
                 //usuarioViewModel.DataExame = ultimaCandidatura.
             }
