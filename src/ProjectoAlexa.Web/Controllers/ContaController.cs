@@ -39,6 +39,7 @@ namespace ProjectoAlexa.Web.Controllers
                 return RedirectToAction("Login", "Conta");
             }
         }
+
         public ActionResult Login()
         {
             return View();

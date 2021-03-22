@@ -84,6 +84,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\AreaCandidaturaRepositorio.cs" />
     <Compile Include="Repositorios\CandidaturaRepositorio.cs" />
+    <Compile Include="Repositorios\ConcursoRepositorio.cs" />
     <Compile Include="Repositorios\ProvinciaRepositorio.cs" />
     <Compile Include="Repositorios\Questionarios\PerguntaRepositorio.cs" />
     <Compile Include="Repositorios\Questionarios\QuestionarioRepositorio.cs" />

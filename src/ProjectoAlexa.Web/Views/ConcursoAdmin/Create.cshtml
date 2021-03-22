@@ -1,0 +1,89 @@
+﻿@model ProjectoAlexa.Web.ViewModels.ConcursoViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <!-- Column -->
+    <div class="col-lg-8 col-xlg-9 col-md-7">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm())
+                {
+                    <form class="form-horizontal form-material">
+                       
+                      
+                            
+                                <div class="form-group">
+                                    <label>
+                                        Data de Inicio
+                                    </label>
+                                    <div class="">
+                                        @Html.TextBoxFor(model => model.DataInicio, new { @class = "form-control", type = "date" })
+                                        <small>
+                                            @Html.ValidationMessageFor(model => model.DataInicio, "", new { @class = "text-danger" })
+                                        </small>
+                                    </div>
+                                </div>
+                            
+                            
+                                <div class="form-group">
+                                    <label>
+                                        Data de Encerramento
+                                    </label>
+                                    <div class="">
+                                        @Html.TextBoxFor(model => model.DataFim, new { @class = "form-control", type = "date" })
+                                        <small>
+                                            @Html.ValidationMessageFor(model => model.DataFim, "", new { @class = "text-danger" })
+                                        </small>
+                                    </div>
+                                </div>
+                            
+                            
+                                <div class="form-group">
+                                    <label>
+                                        Data de Exames
+                                    </label>
+                                    <div class="">
+                                        @Html.TextBoxFor(model => model.DataExames, new { @class = "form-control", type = "date" })
+                                        <small>
+                                            @Html.ValidationMessageFor(model => model.DataExames, "", new { @class = "text-danger" })
+                                        </small>
+                                    </div>
+                                </div>
+                            
+                           
+                                <div class="form-group">
+                                    <label>
+                                        Data de Resultados
+                                    </label>
+                                    <div class="">
+                                        @Html.TextBoxFor(model => model.DataResultados, new { @class = "form-control", type = "date" })
+                                        <small>
+                                            @Html.ValidationMessageFor(model => model.DataResultados, "", new { @class = "text-danger" })
+                                        </small>
+                                    </div>
+                                </div>
+                            
+                            
+
+
+
+                        <div class="form-group">
+                            <div class="col-sm-12 d-flex">
+                                <button class="btn btn-success mx-auto mx-md-0 text-white">
+                                    Adicionar
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                }
+
+            </div>
+        </div>
+    </div>
+    <!-- Column -->
+</div>
+
+

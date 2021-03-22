@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using ProjectoAlexa.Data.Entities;
+﻿using ProjectoAlexa.Data.Entities;
 using ProjectoAlexa.Data.Repositorios;
 using ProjectoAlexa.Web.ViewModels;
 using System.Web.Mvc;

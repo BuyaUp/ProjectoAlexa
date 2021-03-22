@@ -19,6 +19,7 @@ namespace ProjectoAlexa.Web.Controllers
 
             return PartialView("~/Views/Shared/_UsuarioAtual.cshtml", usuarioViewModel);
         }
+
         public ActionResult Perfil()
         {
             var user = UsuarioRepositorio.BuscarPeloEmail(User.Identity.Name);

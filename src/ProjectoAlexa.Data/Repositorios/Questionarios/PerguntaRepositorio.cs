@@ -1,11 +1,7 @@
 ﻿using ProjectoAlexa.Data.DataContexts;
 using ProjectoAlexa.Data.Entities;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectoAlexa.Data.Repositorios.Questionarios
 {

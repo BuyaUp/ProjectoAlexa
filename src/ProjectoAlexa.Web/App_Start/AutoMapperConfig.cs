@@ -33,6 +33,9 @@ namespace ProjectoAlexa
 
                 cfg.CreateMap<RespostaViewModel, Resposta>()
                 .ReverseMap();
+
+                cfg.CreateMap<ConcursoViewModel, Concurso>()
+                .ReverseMap();
             });
 
 

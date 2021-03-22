@@ -145,6 +145,7 @@
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="Controllers\Admin\AdminController.cs" />
     <Compile Include="Controllers\Admin\AreasAdminController.cs" />
+    <Compile Include="Controllers\Admin\ConcursoAdminController.cs" />
     <Compile Include="Controllers\Admin\QuestionarioAdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CandidaturaController.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AreaCandidaturaViewModel.cs" />
     <Compile Include="ViewModels\CandidaturaViewModel.cs" />
+    <Compile Include="ViewModels\ConcursoViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\PerguntaViewModel.cs" />
     <Compile Include="ViewModels\QuestionarioViewModel.cs" />
@@ -1428,6 +1430,8 @@
     <Content Include="Views\Exame\Index.cshtml" />
     <Content Include="Views\Candidatura\Index.cshtml" />
     <Content Include="Views\Exame\FazerExame.cshtml" />
+    <Content Include="Views\ConcursoAdmin\Index.cshtml" />
+    <Content Include="Views\ConcursoAdmin\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
