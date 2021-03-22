@@ -17,7 +17,7 @@ namespace ProjectoAlexa.Data.Repositorios
 
             using (var db = new ProjectoBaseDataContext())
             {
-         
+
                 ret = db.Concursos
                         .ToList();
             }
@@ -25,10 +25,6 @@ namespace ProjectoAlexa.Data.Repositorios
             return ret;
         }
 
-        public static object BuscarPeloId()
-        {
-            throw new NotImplementedException();
-        }
 
         public static string Salvar(Concurso concurso)
         {
@@ -62,6 +58,21 @@ namespace ProjectoAlexa.Data.Repositorios
             using (var db = new ProjectoBaseDataContext())
             {
                 ret = db.Concursos.Find(id);
+            }
+
+            return ret;
+        }
+
+        public static Concurso BuscarConcursoAtual()
+        {
+            Concurso ret = null;
+
+            using (var db = new ProjectoBaseDataContext())
+            {
+                ret = db.Concursos
+                     .OrderByDescending(c => c.Ativo)
+                     .ThenByDescending(c => c.DataCadastro)
+                     .FirstOrDefault();
             }
 
             return ret;
