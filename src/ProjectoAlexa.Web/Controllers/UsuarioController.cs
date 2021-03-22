@@ -26,16 +26,21 @@ namespace ProjectoAlexa.Web.Controllers
 
             var usuarioViewModel = Mapper.Map<UsuarioAtualViewModel>(user);
 
-            var ultimaCandidatura = CandidaturaRepositorio.BuscarPeloUsuarioId(user.Id)
-                .OrderByDescending(c => c.DataCadastro).FirstOrDefault();
+            var concursoAtual = ConcursoRepositorio.RecuperarLista()
+                                .OrderByDescending(c => c.Ativo)
+                                .ThenByDescending(c => c.DataCadastro)
+                                .FirstOrDefault();
 
-            //var concursoAtual = ConcursoRepositorio.BuscarPeloId();
+            var ultimaCandidatura = CandidaturaRepositorio.BuscarPeloUsuarioId(user.Id)
+                                    .Where(c => c.ConcursoId == concursoAtual.Id)
+                                    .OrderByDescending(c => c.DataCadastro)
+                                    .FirstOrDefault();
 
             if (ultimaCandidatura != null)
             {
                 usuarioViewModel.DataUltimaCandidatura = ultimaCandidatura.DataCadastro;
                 usuarioViewModel.UltimaCandidaturaId = ultimaCandidatura.Id;
-                //usuarioViewModel.DataExame = ultimaCandidatura.
+                usuarioViewModel.DataExame = ConcursoRepositorio.BuscarPeloId(ultimaCandidatura.ConcursoId).DataExames;
             }
 
 
