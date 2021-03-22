@@ -16,6 +16,6 @@ namespace ProjectoAlexa.Web.ViewModels
 
         public string UltimaCandidaturaId { get; set; }
         public DateTime DataUltimaCandidatura { get; set; }
-        public int DataExame { get; set; }
+        public DateTime DataExame { get; set; }
     }
 }

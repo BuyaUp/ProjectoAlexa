@@ -49,7 +49,7 @@
         <center>
             <div class="card">
 
-                @if (Model.DataUltimaCandidatura != DateTime.Now.Year)
+                @if (Model.DataUltimaCandidatura.Date.Year != DateTime.Now.Year)
                 {
                     <h4>Ainda não efetuou a sua candidatura. <a href="@Url.Action("Adicionar","Candidatura")" class="text-warning">Candidatar-se »»</a></h4>
                 }
