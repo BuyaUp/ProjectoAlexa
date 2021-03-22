@@ -14,6 +14,10 @@ namespace ProjectoAlexa.Web.Controllers.Admin
             return View();
         }
 
+        public ActionResult VisaoGeral()
+        {
+            return View();
+        }
 
 
     }

@@ -148,6 +148,7 @@
     <Compile Include="Controllers\Admin\QuestionarioAdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CandidaturaController.cs" />
+    <Compile Include="Controllers\ConcursoController.cs" />
     <Compile Include="Controllers\ContaController.cs" />
     <Compile Include="Controllers\ExameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -922,8 +923,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -1428,6 +1427,7 @@
     <Content Include="Views\Exame\Index.cshtml" />
     <Content Include="Views\Candidatura\Index.cshtml" />
     <Content Include="Views\Exame\FazerExame.cshtml" />
+    <Content Include="Views\Admin\VisaoGeral.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

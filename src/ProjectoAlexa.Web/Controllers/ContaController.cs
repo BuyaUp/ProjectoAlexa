@@ -78,7 +78,7 @@ namespace ProjectoAlexa.Web.Controllers
                     HttpContext.Response.Cookies.Add(authCookie);
 
                     if (usuario.UsuarioPerfil.PerfilNome.Contains("Administrador"))
-                        return RedirectToAction("Perfil", "Admin");
+                        return RedirectToAction("VisaoGeral", "Admin");
                     else if (usuario.UsuarioPerfil.PerfilNome.Contains("Usuário"))
                         return RedirectToAction("Perfil", "Usuario");
 

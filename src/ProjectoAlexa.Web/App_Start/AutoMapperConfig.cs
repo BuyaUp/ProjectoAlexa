@@ -21,6 +21,10 @@ namespace ProjectoAlexa
                 cfg.CreateMap<CandidaturaViewModel, Candidatura>()
                 .ReverseMap();
 
+                cfg.CreateMap<ConcursoViewModel, Concurso>()
+                .ReverseMap();
+
+
                 cfg.CreateMap<UsuarioAtualViewModel, Usuario>()
                 .ReverseMap();
 
