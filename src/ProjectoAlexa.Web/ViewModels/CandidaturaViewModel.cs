@@ -30,6 +30,6 @@ namespace ProjectoAlexa.Web.ViewModels
         public HttpPostedFileBase CartaFile { get; set; }
 
         public string ProvinciaId { get; set; }
-
+        public string ConcursoId { get; set; }
     }
 }

@@ -27,6 +27,7 @@ namespace ProjectoAlexa.Web.Controllers
         {
             ViewBag.Areas = AreaCandidaturaRepositorio.BuscarTodas();
             ViewBag.Provincias = ProvinciaRepositorio.BuscarTodas();
+            //var concursoAtual = ConcursoRepositorio.BuscarTodos();
             return View();
         }
 
