@@ -36,10 +36,43 @@ namespace ProjectoAlexa.Data.Repositorios.Questionarios
                      .Include(a => a.AreaCandidatura)
                      .Include(a => a.Perguntas.Select(r => r.Respostas))
                      .AsNoTracking()
+                     .OrderByDescending(q => q.DataCadastro)
                      .ToList();
             }
 
             return ret;
+        }
+
+        public static List<Questionario> BuscarPorNome(string titulo)
+        {
+            return BuscarTodos()
+                 .Where(q => q.Titulo.ToLower().Contains(titulo.ToLower()))
+                 .ToList();
+        }
+
+        public static string GerarNomeAutomatico()
+        {
+            int max = 1;
+            List<Questionario> quiz = BuscarPorNome("Question");
+
+            if (quiz != null)
+            {
+                foreach (var item in quiz)
+                {
+                    var verificaNome = item.Titulo.Split(' ');
+
+                    for (int i = 0; i < verificaNome.Length; i++)
+                    {
+                        if (int.TryParse(verificaNome[i], out int result))
+                            if (result >= max)
+                                max = result + 1;
+                    }
+                }
+
+                return $"Questionário {max}";
+            }
+            else
+                return $"Questionário {max}";
         }
 
         public static int Salvar(Questionario questionario)

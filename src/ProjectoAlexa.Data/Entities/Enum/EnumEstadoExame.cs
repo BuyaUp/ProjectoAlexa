@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ProjectoAlexa.Data.Entities.Enum
 {
-    public enum EnumTempoExame
+    public enum EnumEstadoExame
     {
-        _30Min = 30,
-        _1H = 60,
-
+        Aprovado = 1,
+        Reprovado = 2,
+        Concluido = 3,
     }
 }

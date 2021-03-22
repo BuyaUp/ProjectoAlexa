@@ -29,10 +29,13 @@ namespace ProjectoAlexa.Web.Controllers
             var ultimaCandidatura = CandidaturaRepositorio.BuscarPeloUsuarioId(user.Id)
                 .OrderByDescending(c => c.DataCadastro).FirstOrDefault();
 
+            //var concursoAtual = ConcursoRepositorio.BuscarPeloId();
+
             if (ultimaCandidatura != null)
             {
                 usuarioViewModel.DataUltimaCandidatura = ultimaCandidatura.DataCadastro.Year;
-                usuarioViewModel.ultimaCandidaturaId = ultimaCandidatura.Id;
+                usuarioViewModel.UltimaCandidaturaId = ultimaCandidatura.Id;
+                //usuarioViewModel.DataExame = ultimaCandidatura.
             }
 
 
