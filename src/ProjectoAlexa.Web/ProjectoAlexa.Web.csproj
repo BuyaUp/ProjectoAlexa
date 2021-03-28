@@ -1432,6 +1432,7 @@
     <Content Include="Views\Exame\FazerExame.cshtml" />
     <Content Include="Views\ConcursoAdmin\Index.cshtml" />
     <Content Include="Views\ConcursoAdmin\Create.cshtml" />
+    <Content Include="Views\Admin\VisaoGeral.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

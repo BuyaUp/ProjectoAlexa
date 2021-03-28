@@ -34,9 +34,7 @@
                                     <td>@questionario.AreaCandidatura.AreaNome</td>
                                     <td>@questionario.TotalPerguntas()</td>
                                     <td>
-                                        <a href="@Url.Action("Detalhes","QuestionarioAdmin")" class="btn btn-success text-white"><span class="mdi mdi-information"></span> Detalhes</a>
                                         <a href="@Url.Action("Create","QuestionarioAdmin", new { id = questionario.Id })" class="btn btn-info"><span class="fas fa-edit"></span> Editar</a>
-                                        <a href="#" class="btn btn-danger"><span class="fas fa-trash-alt"></span> Eliminar</a>
                                     </td>
                                 </tr>
                             }

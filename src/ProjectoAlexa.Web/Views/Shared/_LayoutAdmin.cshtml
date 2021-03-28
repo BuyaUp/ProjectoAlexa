@@ -164,7 +164,7 @@
 
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                               href="@Url.Action("Index","Concurso")" aria-expanded="false">
+                               href="@Url.Action("Index","ConcursoAdmin")" aria-expanded="false">
                                 <i class="mdi mr-2 mdi-book"></i><span class="hide-menu">Concursos</span>
                             </a>
                         </li>
@@ -176,12 +176,6 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                               href="@Url.Action("Index","ConcursoAdmin")" aria-expanded="false">
-                                <i class="mdi mr-2 mdi-table"></i><span class="hide-menu">Concurso</span>
-                            </a>
-                        </li>
 
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
@@ -225,9 +219,12 @@
                     </div>
                     <div class="col-4 link-wrap">
                         <!-- item-->
-                        <a href="" class="link" data-toggle="tooltip" title="" data-original-title="Logout">
-                            <i class="mdi mdi-power"></i>
-                        </a>
+                        @using (Html.BeginForm("LogOut", "Conta", new { Area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+                        {
+                            @Html.AntiForgeryToken()
+                        <a class="link" href="javascript:document.getElementById('logoutForm').submit()"> <i class="text-danger mdi mdi-power"></i></a>
+                        }
+
                     </div>
                 </div>
             </div>
