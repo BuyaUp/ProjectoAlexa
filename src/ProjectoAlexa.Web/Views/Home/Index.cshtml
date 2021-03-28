@@ -44,38 +44,52 @@
 
 
 <!--Pesquisar candiadatura-->
-
-<div class="row">
-    <div class="col-md-12">
-            <h3 class="text-center">Pesquisar candidatura</h3>
+<center>
+    <div class="row">
+        <div class="col-md-12">
+            <h5 class="text-center mt-3">Pesquisar candidatura</h5>
             <hr />
-    </div>
-
-    <div class="col-md-12 text-center">
-        <form class="form-inline">
-            <input type="search" class="form-control" placeholder="Número do candidato..." />
-            <button class="btn btn-info"> <span class="fas fa-search"></span></button>
-        </form>
-    </div>
-</div>
-
-
-<div class="row">
-
-
-    <div class="col-md-3 mt-3">
-        <h4 class="text-center">Notícias</h4>
-        <hr />
-        <div class="card shadow">
-            <img class="card-img" src="~/Media/Imagens/xps-kLfkVa_4aXM-unsplash.jpg" />
-            <div class="card-img-overlay text-white">
-                <h3 class="bg-info text-center">Já estão abertas as inscrições para o concurso público</h3>
-            </div>
-            <div class="card-body">
-                <a class="btn btn-warning" href="#"> Inscrever-se</a>
-            </div>
         </div>
+
+            <div class="col-md-9 centralizado">
+                <form class="form-inline ml-5">
+                    <input type="search" class="form-control" placeholder="Número da candidatura..." />
+                    <button class="btn btn-info"> <span class="fas fa-search"></span></button>
+                </form>
+               <hr class="mt-5" />
+            </div>
+
+
+            <div class="col-md-2">
+                <h4 class="text-center bg-info rounded text-white p-3">Notícias</h4>
+                <hr />
+                <div class="card shadow  mt-3">
+                    <img class="card-img" src="~/Media/Imagens/xps-kLfkVa_4aXM-unsplash.jpg" />
+                    <div class="card-img-overlay text-white">
+                        <h5 class="text-center" style="background-color:rgba(0,0,0,0.5)">Já estão abertas as inscrições para o concurso público @DateTime.Now.Year</h5>
+                    </div>
+                    <div class="card-body">
+                        <a class="btn btn-warning" href="@Url.Action("Registar","Conta")"> Saiba mais...</a>
+                    </div>
+                </div>
+
+                <div class="card shadow mt-3">
+                    <img class="card-img" src="~/Media/Imagens/xps-kLfkVa_4aXM-unsplash.jpg" />
+                    <div class="card-img-overlay text-white">
+                        <h5 class="text-center" style="background-color:rgba(0,0,0,0.5)">Em breve serão anunciadas as datas dos exames...</h5>
+                    </div>
+                    <div class="card-body">
+                        <a class="btn btn-warning" href="#"> Saiba mais...</a>
+                    </div>
+                </div>
+            </div>
+
+
     </div>
 
-</div>
+</center>
+
+
+
+
 
