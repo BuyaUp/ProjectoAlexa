@@ -381,6 +381,7 @@
     <Content Include="Scripts\ScriptsDoProjecto\classes\Pergunta.js" />
     <Content Include="Scripts\ScriptsDoProjecto\classes\Questionario.js" />
     <Content Include="Scripts\ScriptsDoProjecto\classes\Resposta.js" />
+    <Content Include="Scripts\ScriptsDoProjecto\Exame.js" />
     <Content Include="Scripts\ScriptsDoProjecto\questionario-add.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />

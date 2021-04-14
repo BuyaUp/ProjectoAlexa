@@ -1,4 +1,5 @@
-﻿using ProjectoAlexa.Data.Repositorios;
+﻿using ProjectoAlexa.Data.Entities;
+using ProjectoAlexa.Data.Repositorios;
 using ProjectoAlexa.Data.Repositorios.Questionarios;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,15 @@ namespace ProjectoAlexa.Web.Controllers
         {
             var candidatura = CandidaturaRepositorio.BuscarPeloId(IdCandidatura);
             var questionario = QuestionarioRepositorio.BuscarTodos().Where(q => q.AreaCandidaturaId == candidatura.AreaCandidaturaId).FirstOrDefault();
+
+            Exame exame;
+            exame = new Exame {
+                Ativo  =true,
+                CandidaturaId = candidatura.Id,
+                QuestionarioId = questionario.Id,                       
+            };
+
+
 
             if (questionario == null)
             {
