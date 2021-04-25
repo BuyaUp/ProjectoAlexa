@@ -13,38 +13,51 @@
     <div style="background:#808080">
         <div class="row">
             <div class="col-md-8" style="margin:50px 0px 50px 230px;">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="text-center">EXAME</h4>
-                    </div>
+                @using (Html.BeginForm())
+                {
 
-                    <div class="card-body">
-                        <div class="">
-                            <div class="col-md-12">
-                                @foreach (var pergunta in Model.Perguntas)
-                                {
-                                <div class="pergunta bg-light p-3 mb-3">
-                                    <b>@(conta++) - @pergunta.Descricao</b>
-                                    @foreach (var resposta in pergunta.Respostas)
-                                    {
-                                        <div class="form-group resposta ml-4 mt-2">
-                                            <input name="radio-1" type="radio" />
-                                            <label for="radio-1">@resposta.Descricao</label>
-                                        </div>
-                                    }
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="text-center">EXAME</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="">
+                                <div class="col-md-12">
+
+                                    <form id="frmQuestionario" name="frmQuestionario">
+                                        @foreach (var pergunta in Model.Perguntas)
+                                        {
+                                            <div class="grupoPergunta" id="grupoPergunta_@pergunta.Id" class="bg-light p-3 mb-3">
+                                                <b>@(conta++) - @pergunta.Descricao</b>
+                                                @foreach (var resposta in pergunta.Respostas)
+                                                {
+                                                    <div class="form-group resposta ml-4 mt-2">
+                                                        <input name="radio_@conta" type="radio" idResposta="@resposta.Id.ToString()" idPergunta="@pergunta.Id.ToString()" texto="@resposta.Descricao.ToString()" />
+                                                        <label for="radio_@conta">@resposta.Descricao</label>
+                                                    </div>
+                                                }
+                                            </div>
+                                        }
+                                    </form>
+     
                                 </div>
-                                }
-
                             </div>
                         </div>
+                        <div class="card-footer">
+                            <input class="btn btn-info" type="button" onclick="terminarExame()" value="Terminar Exame" />
+                        </div>
                     </div>
-                    <div class="card-footer">
-                        <input class="btn btn-info" type="button" value="Terminar Exame" />
-                    </div>
-                </div>
+                }
+
             </div>
 
         </div>
     </div>
+
+}
+
+@section scripts{
+
+    <script src="~/Scripts/ScriptsDoProjecto/Exame.js"></script>
 
 }
