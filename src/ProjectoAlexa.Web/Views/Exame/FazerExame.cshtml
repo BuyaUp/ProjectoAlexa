@@ -32,7 +32,7 @@
                                                 @foreach (var resposta in pergunta.Respostas)
                                                 {
                                                     <div class="form-group resposta ml-4 mt-2">
-                                                        <input name="radio_@conta" type="radio" idResposta="@resposta.Id.ToString()" idPergunta="@pergunta.Id.ToString()" texto="@resposta.Descricao.ToString()" />
+                                                        <input name="radio_@conta" type="radio" idResposta="@resposta.Id" idPergunta="@pergunta.Id" texto="@resposta.Descricao.ToString()" idExame="@ViewBag.ExameId"/>
                                                         <label for="radio_@conta">@resposta.Descricao</label>
                                                     </div>
                                                 }

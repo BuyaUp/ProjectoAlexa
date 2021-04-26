@@ -1,4 +1,4 @@
-﻿var listaResposta = [];
+﻿var listaProvas = [];
 
 function terminarExame() {
     //Verificar cada radio button
@@ -9,16 +9,26 @@ function terminarExame() {
 
 
             //Adicionar respostas na lista de respostas
-            var resposta = {
-                PerguntaId =$(this).attr("idPergunta"),
-                RespostaId =$(this).attr("idResposta")
-            }
+            var prova = {
+                PerguntaId: $(this).attr("idPergunta"),
+                RespostaSelecionadaId: $(this).attr("idResposta"),
+                ExameId: $(this).attr("idExame")
+            };
 
-            //Enviar os dados e cadastrar na tabela prova
-
+            listaProvas.push(prova);
         }
     });
 
+    enviarDados(listaProvas);
+
+}
+
+//Enviar os dados na base de dados
+function enviarDados(provas) {
+    $.post("https://localhost:44329/Exame/AddResposta/", { 'provas': provas }, function (data) {
+        alert("Exame concluído com sucesso! Você foi"+data.resultado+ "Com o total de " + data.pontos+" pontos em "+ data.totalDePontos+ ". O que corresponde a "+percentagem+"% de acerto!");
+    })
+    window.location.href = "https://localhost:44329/Usuario/Perfil";
 }
 
 
