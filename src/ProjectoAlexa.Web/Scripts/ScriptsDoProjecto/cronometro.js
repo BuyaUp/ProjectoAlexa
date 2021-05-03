@@ -21,7 +21,7 @@ function stop() {
     //minuto = 0;
     //segundo = 0;
 
-    $("#contador").text() = hora + ":" + minuto + ":" + segundo;
+    $("#contador").text(hora + ":" + minuto + ":" + segundo);
  }
 
 function timer() {

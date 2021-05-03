@@ -1,6 +1,7 @@
 ﻿var listaProvas = [];
-
+$("#resultadoExame").text("Infelizmente não respondeu nenhuma questão. A sua pontuação é '0'!");
 function terminarExame() {
+    stop();
     //Verificar cada radio button
     $("input:radio").each(function (index) {
         //Verificar apenas as radios marcadas
@@ -42,16 +43,23 @@ function enviarDados(provas) {
         }
 
 
-         var aviso = alert("Exame concluído com sucesso! Você foi " + resultado + " com o total de " + data.pontos + "/" + totalPontos + " pontos. O que corresponde a " + parseInt(data.porcentagem) + "% de acerto!");
+        $("#resultadoExame").text("Exame concluído com sucesso! Você foi " + resultado + " com o total de " + data.pontos + "/" + totalPontos + " pontos. O que corresponde a " + parseInt(data.porcentagem) + "% de acerto!");
     })
 
-    $("modal").modal();
+    abrirModal();
+   
 
-    if(aviso)
+}
+
+
+function fecharModal() {
     window.location.href = "https://localhost:44329/Usuario/Perfil";
 }
 
 
-
-
+function abrirModal() {
+    $("#myModal").modal({
+        show: true
+    });
+}
 

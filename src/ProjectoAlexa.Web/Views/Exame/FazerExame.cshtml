@@ -78,18 +78,17 @@
 
 
 
-<div class="modal" tabindex="-1">
+<div class="modal" tabindex="-1" id="myModal" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title">Resultado do Exame</h5>
             </div>
             <div class="modal-body">
-                <p id="resultadoExame"></p>
+                <h6 id="resultadoExame"></h6>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Fechar</button>
+                <button type="button" data-target="#myModal" data-backdrop="static" onclick="fecharModal()" class="btn btn-primary">Fechar</button>
             </div>
         </div>
     </div>
@@ -105,5 +104,5 @@
 @section scripts{
 
     <script src="~/Scripts/ScriptsDoProjecto/Exame.js"></script>
-    <script src="~/Scripts/ScriptsDoProjecto/cronometro.js"></script>
+    <script src="~/Scripts/ScriptsDoProjecto/cronometro-reverso.js"></script>
 }
