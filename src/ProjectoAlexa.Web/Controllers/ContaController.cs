@@ -28,6 +28,11 @@ namespace ProjectoAlexa.Web.Controllers
                 return View(viewModel);
             else
             {
+                if(DateTime.Now.Year - viewModel.DataNascimento.Year < 18)
+                {
+                    ViewBag.mensagem = "Deve ser maior de 18 anos para efetuar o cadastro!";
+                    return View(viewModel);
+                }
                 viewModel.UsuarioPerfilId = UsuarioPerfilRepositorio.BuscarPeloNome("Usuário").Id;
                 viewModel.NomeUsuario = viewModel.Email;
 

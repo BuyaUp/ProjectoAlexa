@@ -18,7 +18,8 @@ namespace ProjectoAlexa.Web.Controllers
         // GET: Exame
         public ActionResult Index()
         {
-            return View();
+            var exames = db.Exames.ToList();
+            return View(exames);
         }
 
         public ActionResult FazerExame(string IdCandidatura)
@@ -27,11 +28,12 @@ namespace ProjectoAlexa.Web.Controllers
             var questionario = QuestionarioRepositorio.BuscarTodos().Where(q => q.AreaCandidaturaId == candidatura.AreaCandidaturaId).FirstOrDefault();
 
             Exame exame;
-            exame = new Exame {
+            exame = new Exame
+            {
                 Ativo = true,
                 CandidaturaId = candidatura.Id,
                 QuestionarioId = questionario.Id,
-                Resultado = 0,
+                Pontos = 0,
             };
 
             db.Exames.Add(exame);
@@ -39,6 +41,7 @@ namespace ProjectoAlexa.Web.Controllers
 
 
             ViewBag.ExameId = exame.Id;
+
 
             if (questionario == null)
             {
@@ -48,41 +51,54 @@ namespace ProjectoAlexa.Web.Controllers
             }
 
             return View(questionario);
-           
+
         }
 
 
-        public JsonResult AddResposta(List<Prova> provas)
+        public JsonResult AddResposta(List<Prova> provas, int totalPontos)
         {
             var pontos = 0;
-            var totalPontosQuestionario = 0;
-            var resultado ="";
+            var perguntaId = 0;
+            var resultado = false;
+
+            //Calcular pontos por cada resposta certa
             foreach (var prova in provas)
             {
-                pontos += db.Perguntas.Find(prova.PerguntaId).Pontos;
+                var resposta = db.Respostas.Find(prova.RespostaSelecionadaId);
+
+                if (resposta.RespostaCerta == true)
+                {
+                    pontos += db.Perguntas.Find(resposta.PerguntaId).Pontos;
+                }
+                perguntaId = prova.PerguntaId;
                 db.Provas.Add(prova);
             }
-            db.SaveChanges();
-            var pergunta = db.Perguntas.Find(provas[0].PerguntaId);
-            var questionario = db.Questionarios.Find(pergunta.QuestionarioId);
 
-            foreach(var questao in questionario.Perguntas)
+
+            //Se acertar mais de 50% do total de pontos = aprovado, caso contrário = reprovado.
+            if (pontos >= ((totalPontos * 50) / 100))
             {
-                totalPontosQuestionario += questao.Pontos;
+                resultado = true;
             }
 
-            if (pontos >= ((totalPontosQuestionario * 50) / 100))
-                resultado = "Aprovado";
-            if (pontos < ((totalPontosQuestionario * 50) / 100))
-                resultado = "reprovado";
+            if (pontos < ((totalPontos * 50) / 100))
+            {
+                resultado = false;
+            }
+
+
+            var porcentagem = (pontos * 100) / totalPontos;
+
 
             var exame = db.Exames.Find(provas[0].ExameId);
-            exame.Resultado = pontos;
+            exame.Resultado = resultado;
+            exame.Pontos = pontos;
 
             db.Entry(exame).State = EntityState.Modified;
             db.SaveChanges();
 
-            return Json(new { pontos }, JsonRequestBehavior.AllowGet);
+
+            return Json(new { pontos, porcentagem,resultado}, JsonRequestBehavior.AllowGet);
         }
     }
 }

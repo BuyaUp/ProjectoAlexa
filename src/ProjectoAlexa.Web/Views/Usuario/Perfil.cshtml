@@ -57,7 +57,10 @@
                     <h4>Ainda não efetuou a sua candidatura. <a href="@Url.Action("Adicionar","Candidatura")" class="text-warning">Candidatar-se »»</a></h4>
                 }
 
-                <h4>Hoje é o dia do exame...<a href="@Url.Action("FazerExame","Exame", new { IdCandidatura = Model.UltimaCandidaturaId})" class="text-warning">  Fazer o exame »»</a></h4>
+                @if (Model.UltimaCandidaturaId != null)
+                {
+                    <h4>Hoje é o dia do exame...<a href="@Url.Action("FazerExame","Exame", new { IdCandidatura = Model.UltimaCandidaturaId})" class="text-warning">  Fazer o exame »»</a></h4>
+                }
 
             </div>
         </center>

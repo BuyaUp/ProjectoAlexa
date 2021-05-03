@@ -12,11 +12,13 @@ namespace ProjectoAlexa.Data.Entities
         public Exame()
         {
             Id = Guid.NewGuid().ToString();
+            Resultado = false;
         }
 
         public string CandidaturaId { get; set; }
         public int QuestionarioId { get; set; }
-        public int Resultado { get; set; }
+        public int Pontos { get; set; }
+        public bool Resultado { get; set; }
         public DateTime? TempoConclusao { get; set; }
 
         public EnumEstadoExame EstadoExame { get; set; }

@@ -4,6 +4,21 @@
     Layout = "~/Views/Shared/_LayoutCandidato.cshtml";
 }
 
+@section styles{
+    <link href="~/Content/Estilos do projecto/cronometro.css" rel="stylesheet" />
+
+    }
+
+    @{
+        var totalPontosQuestionario = 0;
+        foreach (var questao in Model.Perguntas)
+        {
+            totalPontosQuestionario = totalPontosQuestionario + questao.Pontos;
+        }
+    }
+
+
+
 @if (ViewBag.Mensagem != null)
 {<h1 class="rounded text-white p-2 text-center m-5 bg-danger">@ViewBag.Mensagem</h1>}
 
@@ -18,7 +33,12 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="text-center">EXAME</h4>
+                            <h4 class="text-center">
+                                EXAME - (<span id="totalPontos">
+                                    @totalPontosQuestionario
+                                </span> pontos )
+                            </h4>
+                          
                         </div>
                         <div class="card-body">
                             <div class="">
@@ -32,14 +52,14 @@
                                                 @foreach (var resposta in pergunta.Respostas)
                                                 {
                                                     <div class="form-group resposta ml-4 mt-2">
-                                                        <input name="radio_@conta" type="radio" idResposta="@resposta.Id" idPergunta="@pergunta.Id" texto="@resposta.Descricao.ToString()" idExame="@ViewBag.ExameId"/>
+                                                        <input name="radio_@conta" type="radio" idResposta="@resposta.Id" idPergunta="@pergunta.Id" texto="@resposta.Descricao.ToString()" idExame="@ViewBag.ExameId" />
                                                         <label for="radio_@conta">@resposta.Descricao</label>
                                                     </div>
                                                 }
                                             </div>
                                         }
                                     </form>
-     
+
                                 </div>
                             </div>
                         </div>
@@ -56,8 +76,34 @@
 
 }
 
+
+
+<div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="resultadoExame"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="cronometro bg-white rounded p-3">
+    <h3 id="contador">00:00:00</h3>
+</div>
+
+
 @section scripts{
 
     <script src="~/Scripts/ScriptsDoProjecto/Exame.js"></script>
-
+    <script src="~/Scripts/ScriptsDoProjecto/cronometro.js"></script>
 }

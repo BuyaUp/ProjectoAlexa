@@ -5,7 +5,7 @@ function terminarExame() {
     $("input:radio").each(function (index) {
         //Verificar apenas as radios marcadas
         if ($(this).prop("checked")) {
-            alert(index + ": IdResposta= " + $(this).attr("idResposta") + " : IdPergunta= " + $(this).attr("idPergunta") + " resposta: " + $(this).attr("texto"));
+            //alert(index + ": IdResposta= " + $(this).attr("idResposta") + " : IdPergunta= " + $(this).attr("idPergunta") + " resposta: " + $(this).attr("texto"));
 
 
             //Adicionar respostas na lista de respostas
@@ -25,9 +25,29 @@ function terminarExame() {
 
 //Enviar os dados na base de dados
 function enviarDados(provas) {
-    $.post("https://localhost:44329/Exame/AddResposta/", { 'provas': provas }, function (data) {
-        alert("Exame concluído com sucesso! Você foi"+data.resultado+ "Com o total de " + data.pontos+" pontos em "+ data.totalDePontos+ ". O que corresponde a "+percentagem+"% de acerto!");
+
+    var totalPontos = parseInt($("#totalPontos").text());
+
+
+    $.post("https://localhost:44329/Exame/AddResposta/", { 'provas': provas, 'totalPontos':totalPontos}, function (data) {
+
+        var resultado = "";
+
+        if (data.resultado) {
+            resultado = "aprovado";
+        }
+
+        if (!data.resultado) {
+            resultado = "reprovado";
+        }
+
+
+         var aviso = alert("Exame concluído com sucesso! Você foi " + resultado + " com o total de " + data.pontos + "/" + totalPontos + " pontos. O que corresponde a " + parseInt(data.porcentagem) + "% de acerto!");
     })
+
+    $("modal").modal();
+
+    if(aviso)
     window.location.href = "https://localhost:44329/Usuario/Perfil";
 }
 
